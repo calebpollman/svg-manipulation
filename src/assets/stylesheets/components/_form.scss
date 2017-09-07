@@ -1,0 +1,44 @@
+.form-background {
+  background-color: $transparent-chrome;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.form-container {
+  background-color: $transparent-black;
+  height: 22vw;
+  margin: 12% 0 0 35%;
+  position: relative;
+  width: 30%;
+}
+
+.form-inner-container {
+  height: 100%;
+  margin: auto;
+  padding-top: 2%;
+  width: 80%;
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: landscape) {
+  .form-container {
+    margin: 16% 0 0 10%;
+    width: 80%;
+  }
+
+  .form-container {
+    height: 178px;
+  }
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+  .form-container {
+    margin: 10% 0 0 10%;
+    width: 80%;
+  }
+
+  .form-container {
+    height: 172px;
+  }
+}

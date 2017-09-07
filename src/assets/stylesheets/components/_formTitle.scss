@@ -1,0 +1,16 @@
+.select-label {
+  border-bottom: 2px solid $light-grey;
+  color: $light-grey;
+  font-size: 1.78vw;
+  letter-spacing: 0.1vw;
+  margin-bottom: 3vw;
+  padding-bottom: 4px;
+  width: 100%;
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+  .select-label {
+    font-size: 2.78vh;
+    letter-spacing: 0.1vh;
+  }
+}

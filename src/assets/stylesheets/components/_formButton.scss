@@ -1,0 +1,27 @@
+.form-button {
+  background-color: black;
+  border: 2px solid $light-grey;
+  bottom: 12%;
+  color: $light-grey;
+  font-size: 1.78vw;
+  letter-spacing: 0.1vw;
+  padding: 1vw 0;
+  position: absolute;
+  transition: all 0.3s linear;
+  width: 80%;
+  &:hover {
+    box-shadow:
+      inset 200px 0 0 0 $chrome,
+      inset -200px 0 0 0 $chrome,
+      inset 0 100px 0 0 $transparent-chrome,
+      inset 0 -100px 0 0 $transparent-chrome;
+    color: $dark-slate-grey;
+  }
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+  .form-button {
+    font-size: 2.78vh;
+    letter-spacing: 0.1vh;
+  }
+}
