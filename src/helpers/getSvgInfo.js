@@ -7,6 +7,7 @@ const getSvgInfo = (input) => {
   const doc = parser.parseFromString(input, "image/svg+xml");
   const svgJson = xmlToJson(doc);
   const svgObject = getTarget(svgJson, 'svg');
+
   const svgAttrs = svgObject.attributes;
 
   // WHAT ABOUT RECTS, CIRCLES, ETC ????????
@@ -15,7 +16,8 @@ const getSvgInfo = (input) => {
   const finalSvgObject = {
     svg: {
       attributes: svgAttrs,
-      groupsAndPaths: svgGroups
+      groupsAndPaths: svgGroups,
+      // style:
     }
   }
   return finalSvgObject;
@@ -71,6 +73,7 @@ const getAttributes = (input, attrs) => {
   }
   return attrObj;
 }
+
 // get svg root
 const getTarget = (input, target) => {
   for (const key of Object.keys(input)) {

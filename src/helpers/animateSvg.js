@@ -3,7 +3,6 @@ const d3 = require('d3');
 const animateSvg = (target, svgInfo, frameOne, frameTwo) => {
 
   target.setAttribute('style','width:60%');
-
   const viewBox = svgInfo.svg.attributes.viewBox;
 
   const svgContainer = d3.select(target)
@@ -17,6 +16,7 @@ const animateSvg = (target, svgInfo, frameOne, frameTwo) => {
 
   const svgGroup = svgContainer.append('g');
 
+  // for all paths
   svgGroup.append('path')
     .attr('id', 'svg-id')
     .attr('fill', 'black');
