@@ -30,7 +30,7 @@ const getNewPaths = (input) => {
 
     // break sommand substrings in to arrays containing command char, hyphens, and corresponding coordinates
     commandStrings = commandStrings.map((command) => {
-      let coordinates = command.split(/([\s-,|amlschvz])/i);
+      let coordinates = command.split(/([\s-,|mlhvzcsqta])/i);
       return coordinates.filter((coordinate) => {
         return coordinate.toLowerCase() !== coordinate.toUpperCase() || coordinate === '-' || !isNaN(parseFloat(coordinate));
       });
@@ -66,7 +66,7 @@ const getNewPaths = (input) => {
             let newCoordinate =  getRandomValue(intCheck);
             path += newCoordinate + ' ';
           }
-        } else if (value[y] === '-' && value[y - 1].match(/[amlschvz]/) === null) {
+        } else if (value[y] === '-' && value[y - 1].match(/[mlhvzcsqta]/) === null) {
           // remove trailing space if value[y] === '-'
           path = path.slice(0, -1) + '-';
           // console.log('new:', path);
@@ -127,7 +127,7 @@ const handleConcatenatedValues = (command) => {
 // returns random path values
 const getRandomValue = (input) => {
   // maybe randomize rangeCap as well
-  const rangeCap = 6;
+  const rangeCap = 12;
   const minValue = input - rangeCap;
   const maxValue = input + rangeCap;
   return (Math.random() * (maxValue - minValue) + minValue).toFixed(3);

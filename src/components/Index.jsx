@@ -11,7 +11,7 @@ class Index extends Component {
     this.state = {
       showForm: true,
       svgList: [],
-      selectedOption: 'testBlackLarge',
+      selectedOption: 'large',
       resetSvg: false,
     };
 
