@@ -5,7 +5,7 @@ const staticSvgs = {
   large: require('./svgFiles/testSvg.svg'),
   docker: require('./svgFiles/docker.svg'),
   fakeDocker: require('./svgFiles/fakeDocker.svg'),
-  // testBlackLarge: require('./svgFiles/testBlackLarge.svg'),
+  testBlackLarge: require('./svgFiles/testBlackLarge.svg'),
   ellipse: require('./svgFiles/ellipse.svg'),
   multiGroup: require('./svgFiles/copySmallRed.svg'),
   smallFrameOne: "M461.8,306.7c-4.9,3.1-8.7,5.5-14.5,9.1c19.6,15,38.1,29.2,60.3,46.3c-29.8,11.7-55.7,12.6-80.1,7.3c-6.4-1.4-22.3-15.7-18.1-33.1c 3.8-15.8,14.7-33.6-8.5-43.5C 419.4,265.2,434.7,274.1,462.8,306.7",

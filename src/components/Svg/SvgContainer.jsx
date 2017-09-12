@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import buildSvg from '../../helpers/buildSvg';
+import createSvg from '../../helpers/createSvg';
 import staticSvgs from '../../assets/staticSvgs/staticSvgs';
 
 class SvgContainer extends Component {
@@ -12,13 +12,13 @@ class SvgContainer extends Component {
   componentDidMount() {
 		const selectedOption = staticSvgs[this.props.selectedOption];
 		const target = this.svg;
-		buildSvg(target, selectedOption);
+		createSvg(target, selectedOption);
   }
 
 	componentDidUpdate() {
 		const selectedOption = staticSvgs[this.props.selectedOption];
 		const target = this.svg;
-		buildSvg(target, selectedOption);
+		createSvg(target, selectedOption);
   }
 
 	// shouldComponentUpdate() {
