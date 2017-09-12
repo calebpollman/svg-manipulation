@@ -9,13 +9,11 @@ import animateSvg from '../helpers/animateSvg';
 const buildSvg = (target, input) => {
 
   const svgInfo = getSvgInfo(input);
-
   const pathArray = getPaths(svgInfo);
-
   const frameOne = getNewPaths(pathArray);
   const frameTwo = getNewPaths(pathArray);
-
   animateSvg(target, svgInfo, frameOne, frameTwo);
+
 }
 
 export default buildSvg;

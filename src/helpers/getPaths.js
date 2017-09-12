@@ -6,11 +6,17 @@ const getPaths = (input) => {
 
   if (groupCheck !== undefined) {
     const paths = groupCheck.path;
-    let tempArray = paths.map((i) => {
-      return i.attributes.d;
-    });
     pathArray.push('groupFlag');
-    pathArray.push(tempArray);
+    // check for multiple paths in group
+    if (paths.length !== undefined) {
+      let tempArray = paths.map((i) => {
+        return i.attributes.d;
+      });
+      pathArray.push(tempArray);
+    } else {
+      pathArray.push(paths.attributes.d);
+    }
+
   } else if (pathCheck !== undefined) {
     pathArray = groupsAndPaths.map((i) => {
       return i.path.attributes.d;
@@ -18,7 +24,7 @@ const getPaths = (input) => {
   } else {
     pathArray.push('No paths or groups present.');
   }
-  
+
   return pathArray;
 }
 

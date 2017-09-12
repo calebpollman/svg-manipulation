@@ -5,7 +5,6 @@ const svgAttributes = ['class', 'd', 'id', 'viewBox', 'fill', 'fill-opacity', 'f
 const getSvgInfo = (input) => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(input, "image/svg+xml");
-  console.log(doc)
   const svgJson = xmlToJson(doc);
   const svgObject = getTarget(svgJson, 'svg');
   const svgAttrs = svgObject.attributes;
