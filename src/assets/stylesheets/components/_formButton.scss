@@ -19,6 +19,18 @@
   }
 }
 
+.form-button-container {
+  opacity: 1.0;
+  transition: all 0.3s 0.1s linear;
+  visibility: visible;
+}
+
+.hide-button {
+  opacity: 0.0;
+  transition: all 0.1s linear;
+  visibility: hidden;
+}
+
 @media only screen and (max-device-width: 736px) and (orientation: portrait) {
   .form-button {
     font-size: 2.78vh;

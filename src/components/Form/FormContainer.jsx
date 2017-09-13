@@ -10,9 +10,17 @@ class FormContainer extends Component {
 
     this.state = {
       tempSelect: this.props.selectedOption,
+      showButton: true,
     }
 
+    this.hideButton = this.hideButton.bind(this);
     this.submitForm = this.submitForm.bind(this);
+  }
+
+  hideButton = () => {
+    this.setState({
+      showButton: !this.state.showButton,
+    });
   }
 
   submitForm = () => {
@@ -24,25 +32,29 @@ class FormContainer extends Component {
   updateSelect = (input) => {
     this.setState({
       tempSelect: input,
+      showButton: true,
     });
   }
 
   render() {
-    const {selectedOption, svgList} = this.props;
+    const {selectedOption, showForm, svgList} = this.props;
+    const {showButton} = this.state;
 
     return (
-      <div
-         className="form-background"
-      >
+      <div className={showForm ? "form-background" : "form-background form-background-hidden"}>
         <div className="form-container">
           <div className="form-inner-container">
             <FormTitle formTitle="Select SVG" />
             <FormSelect
               selectedOption={selectedOption}
+              hideButton={this.hideButton}
               svgList={svgList}
               updateSelect={this.updateSelect}
             />
-            <FormButton submitForm={this.submitForm} />
+            <FormButton
+              submitForm={this.submitForm}
+              showButton={showButton}
+            />
           </div>
         </div>
       </div>

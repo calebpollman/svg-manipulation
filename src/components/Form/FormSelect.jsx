@@ -23,6 +23,7 @@ class FormSelect extends Component {
   }
 
   toggleIcon = () => {
+    this.props.hideButton();
     this.setState({
       isOpen: !this.state.isOpen,
     });

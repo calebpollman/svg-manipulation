@@ -11,7 +11,7 @@ class Index extends Component {
     this.state = {
       showForm: true,
       svgList: [],
-      selectedOption: 'colors',
+      selectedOption: 'large',
       resetSvg: false,
     };
 
@@ -46,24 +46,19 @@ class Index extends Component {
   render() {
     let {resetSvg, selectedOption, showForm, svgList} = this.state;
 
-    let form = null;
-    if (showForm) {
-      form = <FormContainer
-        hideForm={this.hideForm}
-        showForm={showForm}
-        selectedOption={selectedOption}
-        svgList={svgList}
-        updateOption={this.updateOption}
-      />
-    };
-
     return (
       <div className="main-container">
+        <FormContainer
+          hideForm={this.hideForm}
+          showForm={showForm}
+          selectedOption={selectedOption}
+          svgList={svgList}
+          updateOption={this.updateOption}
+        />
         <ToggleIcon
           hideForm={this.hideForm}
           showForm={showForm}
         />
-        {form}
         <SvgContainer
           selectedOption={selectedOption}
           resetSvg={resetSvg}

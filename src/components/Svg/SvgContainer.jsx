@@ -25,10 +25,6 @@ class SvgContainer extends Component {
 		createSvg(target, selectedOption);
   }
 
-	// shouldComponentUpdate() {
-	// 	return this.props.resetSvg;
-	// }
-
 	//componentWillReceiveProps()
 
 	render() {

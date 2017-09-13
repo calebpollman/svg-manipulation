@@ -46,7 +46,9 @@ const createSvg = (target, input) => {
 const animatePath = (svgGroup, groupId, path, i=0) => {
   const d = path[0].d;
   let fill = path[1].fill;
-  const duration = parseInt(getRandomValue(9000, 6000, 0), 10);
+  const duration = parseInt(getRandomValue(12000, 3000, 0), 10);
+  const frameOne = getNewPath(d, 10);
+  const frameTwo = getNewPath(d, 10);
 
   svgGroup.append('path')
     .attr('id', groupId + i)
@@ -55,8 +57,8 @@ const animatePath = (svgGroup, groupId, path, i=0) => {
     document.getElementById(groupId + i).animate([
       // keyframes
       // second arg is modifier for getRandomValue
-      { d: getNewPath(d, 40) },
-      { d: getNewPath(d, 40) }
+      { d: frameOne },
+      { d: frameTwo }
     ], {
       // animate options
       direction: 'alternate-reverse',

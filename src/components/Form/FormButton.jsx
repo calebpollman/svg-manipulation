@@ -10,19 +10,24 @@ class FormButton extends Component {
   }
 
   render() {
+    const {showButton} = this.props;
+
     return (
-      <button
-        className="form-button tk-europa"
-        onClick={(e) => this.submitForm(e)}
-      >
-        View SVG
-      </button>
+      <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
+        <button
+          className="form-button tk-europa"
+          onClick={(e) => this.submitForm(e)}
+        >
+          View SVG
+        </button>
+      </div>
     );
   }
 }
 
 FormButton.PropTypes = {
   submitForm: PropTypes.func,
+  showButon: PropTypes.string,
 }
 
 export default FormButton;
