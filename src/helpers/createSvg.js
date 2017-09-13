@@ -1,15 +1,15 @@
 import getSvgInfo from './getSvgInfo';
 import getPaths from './getPaths';
 import getNewPath from './getNewPath';
+import getRandomValue from './getRandomValue';
+
 const d3 = require('d3');
 const uuidv4 = require('uuid/v4');
 
 const createSvg = (target, input) => {
-  // d3.select(target).remove();
 
   const svgInfo = getSvgInfo(input);
-  let pathArray = getPaths(svgInfo);
-  console.log(pathArray);
+  let svgArray = getPaths(svgInfo);
   target.setAttribute('style','width:60%');
   const viewBox = svgInfo.svg.attributes.viewBox;
 
@@ -23,33 +23,46 @@ const createSvg = (target, input) => {
     .attr('overflow', 'visible')
     .classed('svg-content-responsive', true);
 
+  const svgGroup = svgContainer.append('g');
+  let groupId = uuidv4();
 
   // check for groupFlag
-  if (pathArray[0] === 'groupFlag' && typeof(pathArray[1]) === 'object') {
-    // add group and iterate over paths
-    pathArray = pathArray[1];
-    const svgGroup = svgContainer.append('g');
-    const groupId = uuidv4();
-
-    for (var i = 0; i < pathArray.length; i++) {
-      // const fillColor = pathArray[i];
-      svgGroup.append('path')
-        .attr('id', groupId + i)
-        .attr('fill', 'black');
-
-        document.getElementById(groupId + i).animate([
-          // keyframes
-          { d: getNewPath(pathArray[i]) },
-          { d: getNewPath(pathArray[i]) }
-        ], {
-          // animate options
-          direction: 'alternate-reverse',
-          // randomize and make setable
-          duration: 4000,
-          iterations: Infinity
-        });
+  if (svgArray[0] === 'groupFlag') {
+    for (var j = 1; j < svgArray.length; j++) {
+      groupId = uuidv4();
+      const pathArray = svgArray[j];
+      for (var i = 0; i < pathArray.length; i++) {
+        const path = pathArray[i];
+        animatePath(svgGroup, groupId, path, i);
+      }
     }
+  } else {
+    svgArray.forEach((path, i) => {
+      return animatePath(svgGroup, groupId, path, i);
+    });
   }
 }
 
+const animatePath = (svgGroup, groupId, path, i=0) => {
+  const d = path[0].d;
+  let fill = path[1].fill;
+  const duration = parseInt(getRandomValue(9000, 6000, 0), 10);
+
+  svgGroup.append('path')
+    .attr('id', groupId + i)
+    .attr('fill', fill === undefined ? 'black' : fill);
+
+    document.getElementById(groupId + i).animate([
+      // keyframes
+      // second arg is modifier for getRandomValue
+      { d: getNewPath(d, 40) },
+      { d: getNewPath(d, 40) }
+    ], {
+      // animate options
+      direction: 'alternate-reverse',
+      // make setable
+      duration: duration,
+      iterations: Infinity
+    });
+}
 export default createSvg;

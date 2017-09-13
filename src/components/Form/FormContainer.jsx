@@ -9,7 +9,7 @@ class FormContainer extends Component {
     super(props);
 
     this.state = {
-      tempSelect: null,
+      tempSelect: this.props.selectedOption,
     }
 
     this.submitForm = this.submitForm.bind(this);

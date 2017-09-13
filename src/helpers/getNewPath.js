@@ -1,5 +1,9 @@
+import getRandomValue from './getRandomValue';
+
 // returns string of new paths
-const getNewPath = (input) => {
+const getNewPath = (input, modifier) => {
+  // values for getRandomValue
+  const precision = 3;
   let path = '';
   const pathBegin = 'path("';
   const pathEnd = 'z")';
@@ -43,7 +47,7 @@ const getNewPath = (input) => {
 
         // handle values between -1 and 1 and not equal to 0
         } else if (intCheck < 1  && intCheck > -1) {
-          let newCoordinate =  getRandomValue(intCheck);
+          let newCoordinate =  getRandomValue(intCheck, modifier, precision);
           newCoordinate = newCoordinate.toString();
 
           // remove trailing 0 after hyphen
@@ -55,7 +59,7 @@ const getNewPath = (input) => {
             path += newCoordinate.substring(1, newCoordinate.length) + ' ';
           }
         } else {
-          let newCoordinate =  getRandomValue(intCheck);
+          let newCoordinate =  getRandomValue(intCheck, modifier, precision);
           path += newCoordinate + ' ';
         }
       } else if (value[y] === '-' && value[y - 1].match(/[mlhvzcsqta]/) === null) {
@@ -113,15 +117,6 @@ const handleConcatenatedValues = (command) => {
     }
   }
   return commandArray;
-}
-
-// returns random path values
-const getRandomValue = (input) => {
-  // maybe randomize rangeCap as well
-  const rangeCap = 12;
-  const minValue = input - rangeCap;
-  const maxValue = input + rangeCap;
-  return (Math.random() * (maxValue - minValue) + minValue).toFixed(3);
 }
 
 export default getNewPath;

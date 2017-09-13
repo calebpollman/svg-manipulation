@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import createSvg from '../../helpers/createSvg';
 import staticSvgs from '../../assets/staticSvgs/staticSvgs';
+const d3 = require('d3');
 
 class SvgContainer extends Component {
 	constructor(props) {
@@ -16,6 +17,9 @@ class SvgContainer extends Component {
   }
 
 	componentDidUpdate() {
+		// clear prior svg
+		d3.select(this.svg).html(null);
+
 		const selectedOption = staticSvgs[this.props.selectedOption];
 		const target = this.svg;
 		createSvg(target, selectedOption);

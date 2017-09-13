@@ -17,7 +17,6 @@ const getSvgInfo = (input) => {
     svg: {
       attributes: svgAttrs,
       groupsAndPaths: svgGroups,
-      // style:
     }
   }
   return finalSvgObject;
@@ -26,6 +25,7 @@ const getSvgInfo = (input) => {
 const getSvgGroupsAndPaths = (input) => {
   let groupsAndPaths = [];
   const groups = input.g;
+
   if (groups !== undefined) {
     if (groups.length !== undefined) {
       for (const key in Object.keys(groups)) {
