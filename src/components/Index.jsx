@@ -45,7 +45,6 @@ class Index extends Component {
 
   render() {
     let {resetSvg, selectedOption, showForm, svgList} = this.state;
-
     return (
       <div className="main-container">
         <FormContainer
@@ -59,10 +58,10 @@ class Index extends Component {
           hideForm={this.hideForm}
           showForm={showForm}
         />
-        {/*<SvgContainer
+        <SvgContainer
           selectedOption={selectedOption}
           resetSvg={resetSvg}
-        />  */}
+        />
       </div>
     );
   }

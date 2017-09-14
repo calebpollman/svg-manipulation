@@ -17,15 +17,25 @@ class SvgContainer extends Component {
   }
 
 	componentDidUpdate() {
+		this.addSvg();
+  }
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.props.resetSvg !== nextProps.resetSvg) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	addSvg = () => {
 		// clear prior svg
 		d3.select(this.svg).html(null);
 
 		const selectedOption = staticSvgs[this.props.selectedOption];
 		const target = this.svg;
 		createSvg(target, selectedOption);
-  }
-
-	//componentWillReceiveProps()
+	}
 
 	render() {
 		return (
