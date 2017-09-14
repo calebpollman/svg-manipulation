@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import CloseIcon from '../Icons/CloseIcon';
-import OpenIcon from '../Icons/OpenIcon';
+import ThatEssIcon from '../Icons/ThatEssIcon';
 
 class ToggleIcon extends Component {
 
@@ -17,7 +16,7 @@ class ToggleIcon extends Component {
         className="toggle-icon-container"
         onClick={this.hideForm}
       >
-        {showForm ? <CloseIcon /> : <OpenIcon />}
+        <ThatEssIcon showForm={showForm} />
       </div>
     );
   }

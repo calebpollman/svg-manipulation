@@ -1,10 +1,53 @@
 .toggle-icon-container {
-  right: 32px;
+  right: 2vw;
   position: absolute;
-  top: 32px;
+  top: 2vw;
+  transition: all linear .2s;
   z-index: 3;
+  &:hover{
+    right: 1.9vw;
+    top: 1.9vw;
+  }
 }
 
 .toggle-icon {
-  fill: $transparent-black;
+  fill: $slate-grey;
+  height: 2.4vw;
+  opacity: 0.8;
+  transition: all linear .2s;
+  transform: translateX(0);
+  width: 2.4vw;
+  &:hover {
+    fill: $dark-slate-grey;
+    height: 2.6vw;
+    width: 2.6vw;
+  }
+}
+
+.toggle-icon-hidden {
+  fill: none;
+  opacity: 0.0;
+  transform: translateX(3vh);
+  &:hover {
+    fill: none;
+  }
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: landscape) {
+  .toggle-icon {
+    height: 4vw;
+    width: 4vw;
+  }
+}
+
+@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+  .toggle-icon-container {
+    right: 4vw;
+    top: 4vw;
+  }
+
+  .toggle-icon {
+    height: 6vh;
+    width: 6vh;
+  }
 }

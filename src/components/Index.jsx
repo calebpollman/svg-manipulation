@@ -59,10 +59,10 @@ class Index extends Component {
           hideForm={this.hideForm}
           showForm={showForm}
         />
-        <SvgContainer
+        {/*<SvgContainer
           selectedOption={selectedOption}
           resetSvg={resetSvg}
-        />
+        />  */}
       </div>
     );
   }
