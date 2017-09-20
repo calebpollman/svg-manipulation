@@ -10,7 +10,7 @@ class FormButton extends Component {
   }
 
   render() {
-    const {showButton} = this.props;
+    const {buttonText, showButton} = this.props;
 
     return (
       <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
@@ -18,7 +18,7 @@ class FormButton extends Component {
           className="form-button tk-europa"
           onClick={(e) => this.submitForm(e)}
         >
-          View SVG
+          {buttonText}
         </button>
       </div>
     );
@@ -26,8 +26,9 @@ class FormButton extends Component {
 }
 
 FormButton.PropTypes = {
-  submitForm: PropTypes.func,
+  buttonText: PropTypes.string,
   showButon: PropTypes.string,
+  submitForm: PropTypes.func,
 }
 
 export default FormButton;

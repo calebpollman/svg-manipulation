@@ -2,9 +2,9 @@
   list-style: none;
   margin: 0;
   padding-left: 0;
-  position: absolute;
+  position: relative;
   transition: background-color 0.3s ease-in 0.1s;
-  width: 80%;
+  width: 100%;
 }
 
 .add-background {
@@ -14,21 +14,23 @@
 .closed {
   background: none;
   opacity: 0.0;
-  position: relative;
+  position: absolute;
   transform: translateY(-3vh);
   transition: all 0.3s ease-out, translateY 0.2s linear;
-  visibility: hidden;
+  visibility: collapse;
+  width: 100%;
   z-index: -1;
 }
 
 .open {
   opacity: 1;
   max-height: auto;
-  position: relative;
+  position: absolute;
   transition-delay: 0s;
   transition: all 0.3s ease-in;
   transform: translateY(0);
   visibility: visible;
+  width: 100%;
   z-index: 1;
 }
 

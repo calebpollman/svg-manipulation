@@ -2,12 +2,14 @@ import getSvgInfo from './getSvgInfo';
 import getPaths from './getPaths';
 import getNewPath from './getNewPath';
 import getRandomValue from './getRandomValue';
+import getGradient from './getGradient';
 
 const d3 = require('d3');
 const uuidv4 = require('uuid/v4');
 
-const createSvg = (target, input) => {
+const createSvg = (target, input, options) => {
 
+  console.log(options)
   const svgInfo = getSvgInfo(input);
   const svgArray = getPaths(svgInfo);
   target.setAttribute('style','width:60%');
@@ -48,39 +50,50 @@ const createSvg = (target, input) => {
 
   let groupId = uuidv4();
 
-  // check for groupFlag
-  if (svgArray[0] === 'groupFlag') {
-    for (var j = 1; j < svgArray.length; j++) {
-      groupId = uuidv4();
-      const pathArray = svgArray[j];
-      for (var i = 0; i < pathArray.length; i++) {
-        const path = pathArray[i];
-        animatePath(svgGroup, groupId, path, i);
-      }
-    }
-  } else {
-    svgArray.forEach((path, i) => {
-      return animatePath(svgGroup, groupId, path, i);
-    });
-  }
+   // check for groupFlag
+   if (svgArray[0] === 'groupFlag') {
+     for (var j = 1; j < svgArray.length; j++) {
+       groupId = uuidv4();
+       const pathArray = svgArray[j];
+       for (var i = 0; i < pathArray.length; i++) {
+         const path = pathArray[i];
+         animateSvg(svgGroup, groupId, path, i, svgContainer);
+       }
+     }
+   } else {
+     svgArray.forEach((path, i) => {
+       return animateSvg(svgGroup, groupId, path, i, svgContainer);
+     });
+   }
 }
 
-const animatePath = (svgGroup, groupId, path, i=0) => {
+const animateSvg = (svgGroup, groupId, path, i=0, svgContainer) => {
   const d = path[0].d;
-  let fill = path[1].fill;
+  const fill = path[1].fill === undefined ? '#000000' : path[1].fill;
   const duration = parseInt(getRandomValue(12000, 3000, 0), 10);
+  getGradient(svgContainer, fill, i, duration);
+  // second arg is modifier for getRandomValue
   const frameOne = getNewPath(d, 10);
   const frameTwo = getNewPath(d, 10);
 
   svgGroup.append('path')
     .attr('id', groupId + i)
-    .attr('fill', fill === undefined ? 'black' : fill);
+    .attr('stroke-linejoin', 'round')
+    // .attr('fill', fill === undefined ? 'black' : fill);
+    .attr('fill', `url(#svgGradient${i})`);
 
   document.getElementById(groupId + i).animate([
     // keyframes
-    // second arg is modifier for getRandomValue
-    { d: frameOne },
-    { d: frameTwo }
+    {
+      d: frameOne,
+      // stroke: 'white',
+      // strokeWidth: '0'
+    },
+    {
+      d: frameTwo,
+      // stroke: 'grey',
+      // strokeWidth: '3'
+    }
   ], {
     // animate options
     direction: 'alternate-reverse',

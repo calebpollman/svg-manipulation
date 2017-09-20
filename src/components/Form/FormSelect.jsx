@@ -9,23 +9,25 @@ class FormSelect extends Component {
 
     this.state = {
       isOpen: false,
-      selectedOption: this.props.selectedOption,
+      selectedTarget: this.props.selectedTarget,
     }
 
-    this.toggleIcon = this.toggleIcon.bind(this);
+    this.toggleList = this.toggleList.bind(this);
     this.selectOption = this.selectOption.bind(this);
   }
 
-  updateSvgList = (svgList, selectedOption) => {
+  updateSvgList = (svgList, selectedTarget) => {
     return svgList.filter((i) => {
-      return i !== selectedOption;
+      return i !== selectedTarget;
     });
   }
 
-  toggleIcon = () => {
+  toggleList = () => {
+    const isOpen = this.state.isOpen;
+    this.props.toggleOptions(isOpen);
     this.props.hideButton();
     this.setState({
-      isOpen: !this.state.isOpen,
+      isOpen: !isOpen,
     });
   }
 
@@ -33,19 +35,20 @@ class FormSelect extends Component {
     e.preventDefault();
     let value = e.target.getAttribute('value');
     this.props.updateSelect(value);
-    this.toggleIcon();
+    this.props.toggleOptions(true);
+    this.toggleList();
     this.setState({
-      selectedOption: value
+      selectedTarget: value
     });
   }
 
   render() {
     let {svgList} = this.props;
-    let {isOpen, selectedOption} = this.state;
+    let {isOpen, selectedTarget} = this.state;
 
-    const newSvgList = this.updateSvgList(svgList, selectedOption);
+    const newSvgList = this.updateSvgList(svgList, selectedTarget);
 
-    const svgOptions = newSvgList.map((i) => {
+    const list = newSvgList.map((i) => {
       return (
         <li
           className="option-text tk-europa"
@@ -62,13 +65,13 @@ class FormSelect extends Component {
         <ul className={isOpen ? "form-select add-background" : "form-select"}>
           <li
             className="default-option option-text tk-europa"
-            onClick={this.toggleIcon}
+            onClick={this.toggleList}
           >
-            {selectedOption}
+            {selectedTarget}
             {isOpen ? <ShrinkIcon /> : <ExpandIcon />}
           </li>
           <div className={isOpen ? "open" : "closed"}>
-            {svgOptions}
+            {list}
           </div>
         </ul>
     );
@@ -76,7 +79,7 @@ class FormSelect extends Component {
 }
 
 FormSelect.PropTypes = {
-  selectedOption: PropTypes.string.isRequired,
+  selectedTarget: PropTypes.string.isRequired,
   svgList: PropTypes.array.isRequired,
   updateOption: PropTypes.func
 }

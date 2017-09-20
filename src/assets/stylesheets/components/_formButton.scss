@@ -1,14 +1,13 @@
 .form-button {
   background-color: black;
   border: 2px solid $light-grey;
-  bottom: 12%;
   color: $light-grey;
   font-size: 1.78vw;
   letter-spacing: 0.1vw;
   padding: 1vw 0;
-  position: absolute;
+  position: relative;
   transition: all 0.3s linear;
-  width: 80%;
+  width: 100%;
   &:hover {
     box-shadow:
       inset 200px 0 0 0 $chrome,

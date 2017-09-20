@@ -1,0 +1,15 @@
+.options-container {
+  height: 7vw;
+  margin: 1vw 0;
+  opacity: 1.0;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  visibility: visible;
+  width: 100%;
+}
+
+.options-container-hidden {
+  height: 0;
+  opacity: 0.0;
+  visibility: collapse;
+}

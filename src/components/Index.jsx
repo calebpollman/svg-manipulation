@@ -9,10 +9,11 @@ class Index extends Component {
     super(props);
 
     this.state = {
+      resetSvg: false,
+      selectedTarget: 'that water',
       showForm: true,
       svgList: [],
-      selectedOption: 'large',
-      resetSvg: false,
+      svgOptions: {},
     };
 
     this.hideForm = this.hideForm.bind(this);
@@ -30,9 +31,13 @@ class Index extends Component {
     this.setState({svgList});
   }
 
-  updateOption = (input) => {
+  updateOptions = (svgOptions) => {
+    this.setState({svgOptions});
+  }
+
+  updateTarget = (input) => {
     this.setState({
-      selectedOption: input,
+      selectedTarget: input,
       resetSvg: !this.state.resetSvg,
     });
   }
@@ -44,23 +49,27 @@ class Index extends Component {
   }
 
   render() {
-    let {resetSvg, selectedOption, showForm, svgList} = this.state;
+    const {resetSvg, selectedTarget, showForm, svgList, svgOptions} = this.state;
+
     return (
       <div className="main-container">
         <FormContainer
           hideForm={this.hideForm}
           showForm={showForm}
-          selectedOption={selectedOption}
+          selectedTarget={selectedTarget}
           svgList={svgList}
-          updateOption={this.updateOption}
+          svgOptions={svgOptions}
+          updateOptions={this.updateOptions}
+          updateTarget={this.updateTarget}
         />
         <ToggleIcon
           hideForm={this.hideForm}
           showForm={showForm}
         />
         <SvgContainer
-          selectedOption={selectedOption}
+          selectedTarget={selectedTarget}
           resetSvg={resetSvg}
+          svgOptions={svgOptions}
         />
       </div>
     );

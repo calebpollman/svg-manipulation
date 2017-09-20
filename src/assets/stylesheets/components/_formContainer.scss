@@ -19,7 +19,7 @@
 
 .form-container {
   background-color: $transparent-black;
-  height: 22vw;
+  height: auto;
   margin: 12% 0 0 35%;
   position: relative;
   width: 30%;
@@ -28,7 +28,7 @@
 .form-inner-container {
   height: 100%;
   margin: auto;
-  padding-top: 2%;
+  padding: 10% 0;
   width: 80%;
 }
 
