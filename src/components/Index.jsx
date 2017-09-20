@@ -9,7 +9,7 @@ class Index extends Component {
     super(props);
 
     this.state = {
-      optionList: ['Fill Gradients', 'Path Manipaluation', 'Path Gradients'],
+      optionList: ['Fill Gradients', 'Path Manipaluation', 'Path Gradients', 'Remove Fills'],
       resetSvg: false,
       selectedTarget: 'that water',
       showForm: true,

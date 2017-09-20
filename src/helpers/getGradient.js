@@ -1,9 +1,9 @@
-const getGradient = (svgContainer, fill, i, duration) => {
+const getGradient = (svgContainer, type, fill, i, duration) => {
   const defs = svgContainer.append('defs');
   const colors = getColors(fill);
 
   const linearGradient = defs.append('linearGradient')
-	.attr('id',`svgGradient${i}`)
+	.attr('id', type + i)
 	.attr('x1','0%')
 	.attr('y1','0%')
 	.attr('x2','100%')

@@ -8,7 +8,6 @@ const staticSvgs = {
   'docker': require('./svgFiles/docker.svg'),
   'fakeDocker': require('./svgFiles/fakeDocker.svg'),
   'testBlackLarge': require('./svgFiles/testBlackLarge.svg'),
-  'ellipse': require('./svgFiles/ellipse.svg'),
   'multiGroup': require('./svgFiles/copySmallRed.svg'),
 };
 

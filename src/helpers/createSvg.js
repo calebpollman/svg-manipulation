@@ -1,8 +1,6 @@
 import getSvgInfo from './getSvgInfo';
 import getPaths from './getPaths';
-import getNewPath from './getNewPath';
-import getRandomValue from './getRandomValue';
-import getGradient from './getGradient';
+import animateSvg from './animateSvg';
 
 const d3 = require('d3');
 const uuidv4 = require('uuid/v4');
@@ -64,38 +62,6 @@ const createSvg = (target, input, options) => {
       return animateSvg(svgGroup, groupId, path, i, svgContainer, options);
     });
   }
-}
-
-const animateSvg = (svgGroup, groupId, path, i=0, svgContainer, options) => {
-  console.log(options);
-  const d = path[0].d;
-  const fill = path[1].fill === undefined ? '#000000' : path[1].fill;
-  const duration = parseInt(getRandomValue(12000, 3000, 0), 10);
-  getGradient(svgContainer, fill, i, duration);
-
-  svgGroup.append('path')
-    .attr('id', groupId + i)
-    .attr('stroke-linejoin', 'round')
-    // .attr('fill', fill === undefined ? 'black' : fill);
-    .attr('fill', `url(#svgGradient${i})`);
-
-  const keyFrame = () => {
-    return {
-      // second arg is modifier for getRandomValue
-      d: getNewPath(d, 10),
-    }
-  }
-
-  document.getElementById(groupId + i).animate([
-    keyFrame(), keyFrame()
-  ], {
-    // animate options
-    direction: 'alternate-reverse',
-    // make setable
-    duration: duration,
-    iterations: Infinity,
-    easing: 'ease-in-out',
-  });
 }
 
 export default createSvg;

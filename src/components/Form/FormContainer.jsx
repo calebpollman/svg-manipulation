@@ -12,7 +12,7 @@ class FormContainer extends Component {
     this.state = {
       tempSelect: this.props.selectedTarget,
       showButton: true,
-      showOptions: false,
+      showOptions: true,
     }
 
     this.hideButton = this.hideButton.bind(this);
@@ -47,7 +47,7 @@ class FormContainer extends Component {
 
   render() {
     const {optionList, selectedTarget, setOption, showForm, svgList, svgOptions, updateOptions} = this.props;
-    const {showButton, showOptions} = this.state;
+    const {showButton, showOptions,  tempSelect} = this.state;
 
     return (
       <div className={showForm ? "form-background" : "form-background form-background-hidden"}>
@@ -66,6 +66,7 @@ class FormContainer extends Component {
               setOption={setOption}
               showOptions={showOptions}
               svgOptions={svgOptions}
+              tempSelect={tempSelect}
               updateOptions={updateOptions}
             />
             <FormButton

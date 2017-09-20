@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SvgPreview from '../Svg/SvgPreview';
 import FormInput from './FormInput';
 
-const FormOptions = ({optionList, setOption, showOptions}) => {
+const FormOptions = ({optionList, tempSelect, setOption, showOptions}) => {
   const options = optionList.map((label, i) => {
     return <FormInput
       key={i}
@@ -10,9 +11,10 @@ const FormOptions = ({optionList, setOption, showOptions}) => {
       setOption={setOption}
     />;
   });
-
+  
   return (
     <div className={showOptions ? "options-container" : "options-container options-container-hidden"}>
+      <SvgPreview tempSelect={tempSelect} />
       {options}
     </div>
   );
