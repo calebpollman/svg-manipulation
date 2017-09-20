@@ -28,7 +28,8 @@ class SvgContainer extends Component {
 		const svgOptions = this.props.svgOptions;
 		const selectedTarget = staticSvgs[this.props.selectedTarget];
 		const target = this.svg;
-		createSvg(target, selectedTarget, svgOptions);
+
+    createSvg(target, selectedTarget, svgOptions);
 	}
 
 	render() {

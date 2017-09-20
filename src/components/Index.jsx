@@ -9,6 +9,7 @@ class Index extends Component {
     super(props);
 
     this.state = {
+      optionList: ['Fill Gradients', 'Path Manipaluation', 'Path Gradients'],
       resetSvg: false,
       selectedTarget: 'that water',
       showForm: true,
@@ -20,7 +21,28 @@ class Index extends Component {
   }
 
   componentWillMount() {
+    this.initializeOptions(this.state.optionList);
     this.translateSvgList(staticSvgs);
+  }
+
+  hideForm = () => {
+    this.setState({
+      showForm: !this.state.showForm,
+    });
+  }
+
+  initializeOptions = (optionList) => {
+    const svgOptions = optionList.reduce((values, option, i) => {
+      values[option] = true;
+      return values;
+    }, {});
+    this.setState({svgOptions});
+  }
+
+  setOption = (label, checked) => {
+    let svgOptions = this.state.svgOptions;
+    svgOptions[label] = checked;
+    this.setState({svgOptions});
   }
 
   translateSvgList = (staticSvgs) => {
@@ -31,10 +53,6 @@ class Index extends Component {
     this.setState({svgList});
   }
 
-  updateOptions = (svgOptions) => {
-    this.setState({svgOptions});
-  }
-
   updateTarget = (input) => {
     this.setState({
       selectedTarget: input,
@@ -42,29 +60,25 @@ class Index extends Component {
     });
   }
 
-  hideForm = () => {
-    this.setState({
-      showForm: !this.state.showForm,
-    });
-  }
-
   render() {
-    const {resetSvg, selectedTarget, showForm, svgList, svgOptions} = this.state;
+    const {optionList, resetSvg, selectedTarget, showForm, svgList, svgOptions} = this.state;
 
     return (
       <div className="main-container">
-        <FormContainer
+        <ToggleIcon
           hideForm={this.hideForm}
           showForm={showForm}
+        />
+        <FormContainer
+          hideForm={this.hideForm}
+          optionList={optionList}
+          setOption={this.setOption}
           selectedTarget={selectedTarget}
+          showForm={showForm}
           svgList={svgList}
           svgOptions={svgOptions}
           updateOptions={this.updateOptions}
           updateTarget={this.updateTarget}
-        />
-        <ToggleIcon
-          hideForm={this.hideForm}
-          showForm={showForm}
         />
         <SvgContainer
           selectedTarget={selectedTarget}

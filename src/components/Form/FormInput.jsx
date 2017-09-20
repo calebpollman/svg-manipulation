@@ -13,14 +13,11 @@ class FormInput extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (e) => {
-    e.preventDefault();
-    const label = e.target.getAttribute('value');
+  handleClick = (value) => {
     const checkValue = !this.state.checked;
-
     this.setState({
       checked: checkValue,
-    }, this.props.setOption(label, checkValue));
+    }, this.props.setOption(value, checkValue));
   }
 
   render() {
@@ -29,9 +26,7 @@ class FormInput extends Component {
 
     return (
       <div className="form-input-container tk-europa">
-        <div onClick={(e) => this.handleClick(e)} value={label}>
-          <FormCheck checked={checked} />
-        </div>
+        <FormCheck checked={checked} handleClick={this.handleClick} value={label} />
         <p className={checked ? "input-text input-text-selected" : "input-text"}>{label}</p>
       </div>
     );
@@ -40,6 +35,7 @@ class FormInput extends Component {
 
 FormInput.PropTypes = {
   label: PropTypes.string,
+  setOption: PropTypes.func,
 }
 
 export default FormInput;
