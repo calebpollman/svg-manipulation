@@ -12,7 +12,7 @@ class FormContainer extends Component {
     this.state = {
       tempSelect: this.props.selectedTarget,
       showButton: true,
-      showOptions: true,
+      showOptions: false,
     }
 
     this.hideButton = this.hideButton.bind(this);

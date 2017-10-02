@@ -16,22 +16,22 @@ const animateSvg = (svgGroup, groupId, path, i=0, svgContainer, options) => {
     .attr('stroke-linejoin', 'round')
     // .attr('fill', fill === undefined ? 'black' : fill)
     .attr('strokeWidth', 10)
-     // .attr('fill', `url(#fill${i})`)
-    .attr('fill', 'none')
-    .attr('stroke', `url(#fill${i})`)
+     .attr('fill', `url(#fill${i})`)
+    // .attr('fill', 'none')
+    .attr('stroke', `url(#stroke${i})`)
     // .attr('stroke', `url(#stroke${i})`);
 
   const keyFrame = () => {
     return {
       // second arg is modifier for getRandomValue
-      // d: getNewPath(d, 10),
+      d: getNewPath(d, 10),
       // stroke: 'teal',
       // strokeWidth: getRandomValue(0, 4, 2, false),
     }
   }
 
   document.getElementById(groupId + i).animate([
-    keyFrame(), keyFrame()
+    keyFrame(), keyFrame(),
   ], {
     // animate options
     direction: 'alternate-reverse',

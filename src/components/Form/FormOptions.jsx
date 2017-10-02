@@ -11,7 +11,7 @@ const FormOptions = ({optionList, tempSelect, setOption, showOptions}) => {
       setOption={setOption}
     />;
   });
-  
+
   return (
     <div className={showOptions ? "options-container" : "options-container options-container-hidden"}>
       <SvgPreview tempSelect={tempSelect} />
