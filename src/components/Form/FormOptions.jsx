@@ -4,11 +4,14 @@ import SvgPreview from '../Svg/SvgPreview';
 import FormInput from './FormInput';
 
 const FormOptions = ({optionList, tempSelect, setOption, showOptions}) => {
-  const options = optionList.map((label, i) => {
+  optionList = Object.entries(optionList);
+  const options = optionList.map((option, i) => {
     return <FormInput
       key={i}
-      label={label}
+      label={option[1].title}
       setOption={setOption}
+      type={option[0]}
+      value={option[1].value}
     />;
   });
 

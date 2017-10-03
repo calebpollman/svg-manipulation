@@ -21,6 +21,8 @@ const getGradient = (svgContainer, type, fill, i, duration) => {
   	.attr('values','100%;200%')
   	.attr('dur', duration)
   	.attr('repeatCount','indefinite');
+
+  return `url(#fill${i})`;
 }
 
 // REFACTOR
@@ -28,18 +30,21 @@ const getColors = (fill) => {
   let colors = [];
   let increment = 0.0;
 
-  if (fill === '#000000' || fill === '#ffffff') {
-    for (var j = 0; j <= 8; j++) {
-      colors.push(fill);
-    }
-    return colors;
-  }
+  fill = fill.toLowerCase();
+
+  // if (fill === '#000000' || fill === '#ffffff') {
+  //   for (var j = 0; j <= 8; j++) {
+  //     colors.push(fill);
+  //   }
+  //   return colors;
+  // }
 
   for (var i = 0; i <= 8; i++) {
     const color = shadeColor(fill, increment);
     colors.push(color);
     increment += -0.1;
   }
+
   return colors;
 }
 

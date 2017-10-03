@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class CheckBoxIcon extends Component {
+class FormCheckBox extends Component {
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (e, value) => {
+  handleClick = (e, label) => {
     e.preventDefault();
-    this.props.handleClick(value);
+    this.props.handleClick(label);
   }
 
   render () {
-    const {checked, value} = this.props;
-
+    const {checked, label} = this.props;
     let path = null, classNames = 'checkbox-icon ';
     if (checked) {
       classNames += 'check-icon';
@@ -27,7 +26,7 @@ class CheckBoxIcon extends Component {
 
     return (
       <div>
-        <svg onClick={(e) => this.handleClick(e, value)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <svg onClick={(e) => this.handleClick(e, label)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0h24v24H0z" fill="none"/>
           {path}
         </svg>
@@ -36,8 +35,8 @@ class CheckBoxIcon extends Component {
   }
 }
 
-CheckBoxIcon.PropTypes = {
+FormCheckBox.PropTypes = {
   checked: PropTypes.bool,
 }
 
-export default CheckBoxIcon;
+export default FormCheckBox;

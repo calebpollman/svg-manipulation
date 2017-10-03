@@ -6,11 +6,11 @@ const d3 = require('d3');
 
 class SvgContainer extends Component {
   componentDidMount() {
-		// this.addSvg();
+		this.addSvg();
   }
 
 	componentDidUpdate() {
-		// this.addSvg();
+		this.addSvg();
   }
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -25,11 +25,11 @@ class SvgContainer extends Component {
 		// clear prior svg
 		d3.select(this.svg).html(null);
 
-		const svgOptions = this.props.svgOptions;
+		const optionList = this.props.optionList;
 		const selectedTarget = staticSvgs[this.props.selectedTarget];
 		const target = this.svg;
 
-    createSvg(target, selectedTarget, svgOptions);
+    createSvg(target, selectedTarget, optionList);
 	}
 
 	render() {

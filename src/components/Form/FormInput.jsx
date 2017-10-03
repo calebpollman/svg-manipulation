@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import FormCheck from '../CheckBoxIcon/CheckBoxIcon';
+import FormCheckBox from './FormCheckBox';
 
 class FormInput extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      checked: true,
+      checked: this.props.value,
     }
 
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (value) => {
+  handleClick = (label) => {
     const checkValue = !this.state.checked;
+    const type = this.props.type;
     this.setState({
       checked: checkValue,
-    }, this.props.setOption(value, checkValue));
+    }, this.props.setOption(type, label, checkValue));
   }
 
   render() {
@@ -26,7 +27,11 @@ class FormInput extends Component {
 
     return (
       <div className="form-input-container tk-europa">
-        <FormCheck checked={checked} handleClick={this.handleClick} value={label} />
+        <FormCheckBox
+          checked={checked}
+          handleClick={this.handleClick}
+          label={label}
+        />
         <p className={checked ? "input-text input-text-selected" : "input-text"}>{label}</p>
       </div>
     );

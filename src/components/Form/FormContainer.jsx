@@ -46,7 +46,7 @@ class FormContainer extends Component {
   }
 
   render() {
-    const {optionList, selectedTarget, setOption, showForm, svgList, svgOptions, updateOptions} = this.props;
+    const {optionList, selectedTarget, setOption, showForm, svgList, updateOptions} = this.props;
     const {showButton, showOptions,  tempSelect} = this.state;
 
     return (
@@ -65,7 +65,6 @@ class FormContainer extends Component {
               optionList={optionList}
               setOption={setOption}
               showOptions={showOptions}
-              svgOptions={svgOptions}
               tempSelect={tempSelect}
               updateOptions={updateOptions}
             />

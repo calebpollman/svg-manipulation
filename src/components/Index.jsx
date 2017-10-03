@@ -3,25 +3,24 @@ import SvgContainer from "./Svg/SvgContainer";
 import FormContainer from './Form/FormContainer';
 import ToggleIcon from './ToggleIcon/ToggleIcon';
 import staticSvgs from '../assets/staticSvgs/staticSvgs';
+import optionList from '../helpers/optionList';
 
 class Index extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      optionList: ['Fill Gradients', 'Path Manipaluation', 'Path Gradients', 'Remove Fills'],
+      optionList: optionList,
       resetSvg: false,
       selectedTarget: 'that water',
       showForm: true,
       svgList: [],
-      svgOptions: {},
     };
 
     this.hideForm = this.hideForm.bind(this);
   }
 
   componentWillMount() {
-    this.initializeOptions(this.state.optionList);
     this.translateSvgList(staticSvgs);
   }
 
@@ -31,18 +30,10 @@ class Index extends Component {
     });
   }
 
-  initializeOptions = (optionList) => {
-    const svgOptions = optionList.reduce((values, option, i) => {
-      values[option] = true;
-      return values;
-    }, {});
-    this.setState({svgOptions});
-  }
-
-  setOption = (label, checked) => {
-    let svgOptions = this.state.svgOptions;
-    svgOptions[label] = checked;
-    this.setState({svgOptions});
+  setOption = (type, label, checked) => {
+    let optionList = this.state.optionList;
+    optionList[type].value = checked;
+    this.setState({optionList});
   }
 
   translateSvgList = (staticSvgs) => {
@@ -61,7 +52,7 @@ class Index extends Component {
   }
 
   render() {
-    const {optionList, resetSvg, selectedTarget, showForm, svgList, svgOptions} = this.state;
+    const {optionList, resetSvg, selectedTarget, showForm, svgList} = this.state;
 
     return (
       <div className="main-container">
@@ -76,14 +67,13 @@ class Index extends Component {
           selectedTarget={selectedTarget}
           showForm={showForm}
           svgList={svgList}
-          svgOptions={svgOptions}
           updateOptions={this.updateOptions}
           updateTarget={this.updateTarget}
         />
         <SvgContainer
           selectedTarget={selectedTarget}
           resetSvg={resetSvg}
-          svgOptions={svgOptions}
+          optionList={optionList}
         />
       </div>
     );
