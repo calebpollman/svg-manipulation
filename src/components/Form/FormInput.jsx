@@ -25,15 +25,18 @@ class FormInput extends Component {
     const {title, disabled} = this.props;
     const {checked} = this.state;
     const isDisabled = disabled ? ' form-input-container-disabled' : '';
-
+    
     return (
-      <div className="form-input-container tk-europa">
+      <div
+        className={`form-input-container tk-europa${isDisabled}`}
+        title={disabled ? 'This option is only available in Chrome.' : ''}>
         <FormCheckBox
           checked={checked}
+          disabled={disabled}
           handleClick={this.handleClick}
           title={title}
         />
-      <p className={checked ? "input-text input-text-selected" : "input-text"}>{title}</p>
+      <p className={checked ? 'input-text input-text-selected' : 'input-text'}>{title}</p>
       </div>
     );
   }

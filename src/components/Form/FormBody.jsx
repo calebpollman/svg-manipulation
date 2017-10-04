@@ -47,7 +47,7 @@ class FormBody extends Component {
   render() {
     const {isChrome, optionList, selectedTarget, setOption, svgList} = this.props;
     const {showButton, showOptions, tempSelect} = this.state;
-
+    
     return (
       <div>
         <FormSelect

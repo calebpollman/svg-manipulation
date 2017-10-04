@@ -4,6 +4,15 @@
   flex-direction: row;
   padding-top: 2px;
   padding-left: 1vw;
+  &-disabled {
+    .input-text, .outline-icon {
+      color: $dark-slate-grey;
+      fill: $dark-slate-grey;
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 }
 
 .input-text {

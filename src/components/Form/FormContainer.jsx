@@ -23,12 +23,12 @@ class FormContainer extends Component {
   render() {
     const {isChrome, optionList, selectedTarget, setOption, showForm, svgList} = this.props;
     const {showAbout} = this.state;
-
+    
     let body = null;
     if (!showAbout) {
       body = (
         <FormBody
-          idChrome={isChrome}
+          isChrome={isChrome}
           optionList={optionList}
           selectedTarget={selectedTarget}
           setOption={setOption}
@@ -44,7 +44,7 @@ class FormContainer extends Component {
         <div className="form-container">
           <div className="form-inner-container">
             <FormTitle
-              formTitle={!showAbout ? "Select SVG" : "About this tho"}
+              formTitle={!showAbout ? "Select SVG" : "About This Tho"}
               showAbout={showAbout}
               toggleAbout={this.toggleAbout}
             />

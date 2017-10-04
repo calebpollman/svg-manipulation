@@ -9,6 +9,7 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
     const title = option[1].title;
     let value = option[1].value;
     const disabled = !isChrome && title === 'Path Manipulation';
+    
     value = disabled ? false : value;
 
     return <FormInput
