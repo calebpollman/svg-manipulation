@@ -1,82 +1,54 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import FormButton from './FormButton';
-import FormOptions from './FormOptions';
-import FormSelect from './FormSelect';
+import About from '../About/About';
+import FormBody from './FormBody';
 import FormTitle from './FormTitle';
-import About from '../About/About.jsx';
 
 class FormContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tempSelect: this.props.selectedTarget,
-      showButton: true,
-      showOptions: false,
+      showAbout: false,
     }
-
-    this.hideButton = this.hideButton.bind(this);
-    this.submitForm = this.submitForm.bind(this);
-    this.toggleOptions = this.toggleOptions.bind(this);
   }
 
-  hideButton = () => {
+  toggleAbout = (event) => {
+    event.preventDefault();
     this.setState({
-      showButton: !this.state.showButton,
-    });
-  }
-
-  submitForm = () => {
-    let value = this.state.tempSelect;
-    this.props.updateTarget(value);
-    this.toggleOptions();
-    this.props.hideForm();
-  }
-
-  toggleOptions = (value) => {
-    this.setState({
-      showOptions: value,
-    })
-  }
-
-  updateSelect = (input) => {
-    this.setState({
-      tempSelect: input,
-      showButton: true,
+      showAbout: !this.state.showAbout,
     });
   }
 
   render() {
-    const {isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateOptions} = this.props;
-    const {showButton, showOptions,  tempSelect} = this.state;
+    const {isChrome, optionList, selectedTarget, setOption, showForm, svgList} = this.props;
+    const {showAbout} = this.state;
+
+    let body = null;
+    if (!showAbout) {
+      body = (
+        <FormBody
+          idChrome={isChrome}
+          optionList={optionList}
+          selectedTarget={selectedTarget}
+          setOption={setOption}
+          svgList={svgList}
+        />
+      );
+    } else {
+      body = <About />;
+    }
 
     return (
       <div className={showForm ? "form-background" : "form-background form-background-hidden"}>
         <div className="form-container">
           <div className="form-inner-container">
-            <About />
-            <FormTitle formTitle="Select SVG" />
-            <FormSelect
-              selectedTarget={selectedTarget}
-              hideButton={this.hideButton}
-              svgList={svgList}
-              toggleOptions={this.toggleOptions}
-              updateSelect={this.updateSelect}
+            <FormTitle
+              formTitle={!showAbout ? "Select SVG" : "About this tho"}
+              showAbout={showAbout}
+              toggleAbout={this.toggleAbout}
             />
-            <FormOptions
-              isChrome={isChrome}
-              optionList={optionList}
-              setOption={setOption}
-              showOptions={showOptions}
-              tempSelect={tempSelect}
-              updateOptions={updateOptions}
-            />
-            <FormButton
-              buttonText="View SVG"
-              submitForm={this.submitForm}
-              showButton={showButton}
-            />
+          {body}
           </div>
         </div>
       </div>

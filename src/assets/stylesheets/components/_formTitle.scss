@@ -9,6 +9,12 @@
   width: 100%;
 }
 
+.title-icon-container {
+  position: absolute;
+  right: 0;
+  top: 3.6vw;
+}
+
 @media only screen and (max-device-width: 736px) and (orientation: portrait) {
   .select-label {
     font-size: 2.78vh;

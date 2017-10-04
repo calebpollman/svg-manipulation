@@ -8,8 +8,8 @@ class FormCheckBox extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (e, title) => {
-    e.preventDefault();
+  handleClick = (event, title) => {
+    event.preventDefault();
     this.props.handleClick(title);
   }
 
@@ -26,7 +26,7 @@ class FormCheckBox extends Component {
 
     return (
       <div>
-        <svg onClick={(e) => this.handleClick(e, title)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <svg onClick={(event) => this.handleClick(event, title)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0h24v24H0z" fill="none"/>
           {path}
         </svg>

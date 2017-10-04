@@ -31,9 +31,9 @@ class FormSelect extends Component {
     });
   }
 
-  selectOption = (e) => {
-    e.preventDefault();
-    let value = e.target.getAttribute('value');
+  selectOption = (event) => {
+    event.preventDefault();
+    let value = event.target.getAttribute('value');
     this.props.updateSelect(value);
     this.props.toggleOptions(true);
     this.toggleList();
@@ -54,7 +54,7 @@ class FormSelect extends Component {
           className="option-text tk-europa"
           key={i}
           value={i}
-          onClick={(e) => this.selectOption(e)}
+          onClick={(event) => this.selectOption(event)}
         >
           {i}
         </li>

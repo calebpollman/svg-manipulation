@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class FormButton extends Component {
-  submitForm = (e) => {
-    e.preventDefault();
-    if (e.type === 'click') {
+  submitForm = (event) => {
+    event.preventDefault();
+    if (event.type === 'click') {
       this.props.submitForm();
     }
   }
@@ -16,7 +16,7 @@ class FormButton extends Component {
       <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
         <button
           className="form-button tk-europa"
-          onClick={(e) => this.submitForm(e)}
+          onClick={(event) => this.submitForm(event)}
         >
           {buttonText}
         </button>
