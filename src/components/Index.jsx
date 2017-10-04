@@ -10,6 +10,7 @@ class Index extends Component {
     super(props);
 
     this.state = {
+      isChrome: null,
       optionList: optionList,
       resetSvg: false,
       selectedTarget: 'that water',
@@ -22,6 +23,20 @@ class Index extends Component {
 
   componentWillMount() {
     this.translateSvgList(staticSvgs);
+    this.checkBrowser();
+  }
+
+  checkBrowser = () => {
+    const browser = navigator.userAgent;
+    let {isChrome} = this.state;
+
+    if (browser.indexOf("Chrome") > -1) {
+      isChrome = true;
+    } else {
+      isChrome = false;
+    }
+
+    this.setState({isChrome});
   }
 
   hideForm = () => {
@@ -52,7 +67,7 @@ class Index extends Component {
   }
 
   render() {
-    const {optionList, resetSvg, selectedTarget, showForm, svgList} = this.state;
+    const {isChrome, optionList, resetSvg, selectedTarget, showForm, svgList} = this.state;
 
     return (
       <div className="main-container">
@@ -62,6 +77,7 @@ class Index extends Component {
         />
         <FormContainer
           hideForm={this.hideForm}
+          isChrome={isChrome}
           optionList={optionList}
           setOption={this.setOption}
           selectedTarget={selectedTarget}

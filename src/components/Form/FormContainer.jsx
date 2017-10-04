@@ -4,6 +4,7 @@ import FormButton from './FormButton';
 import FormOptions from './FormOptions';
 import FormSelect from './FormSelect';
 import FormTitle from './FormTitle';
+import About from '../About/About.jsx';
 
 class FormContainer extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class FormContainer extends Component {
   submitForm = () => {
     let value = this.state.tempSelect;
     this.props.updateTarget(value);
+    this.toggleOptions();
     this.props.hideForm();
   }
 
@@ -46,13 +48,14 @@ class FormContainer extends Component {
   }
 
   render() {
-    const {optionList, selectedTarget, setOption, showForm, svgList, updateOptions} = this.props;
+    const {isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateOptions} = this.props;
     const {showButton, showOptions,  tempSelect} = this.state;
 
     return (
       <div className={showForm ? "form-background" : "form-background form-background-hidden"}>
         <div className="form-container">
           <div className="form-inner-container">
+            <About />
             <FormTitle formTitle="Select SVG" />
             <FormSelect
               selectedTarget={selectedTarget}
@@ -62,6 +65,7 @@ class FormContainer extends Component {
               updateSelect={this.updateSelect}
             />
             <FormOptions
+              isChrome={isChrome}
               optionList={optionList}
               setOption={setOption}
               showOptions={showOptions}

@@ -13,33 +13,34 @@ class FormInput extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (label) => {
+  handleClick = (title) => {
     const checkValue = !this.state.checked;
     const type = this.props.type;
     this.setState({
       checked: checkValue,
-    }, this.props.setOption(type, label, checkValue));
+    }, this.props.setOption(type, title, checkValue));
   }
 
   render() {
-    const {label} = this.props;
+    const {title, disabled} = this.props;
     const {checked} = this.state;
+    const isDisabled = disabled ? ' form-input-container-disabled' : '';
 
     return (
       <div className="form-input-container tk-europa">
         <FormCheckBox
           checked={checked}
           handleClick={this.handleClick}
-          label={label}
+          title={title}
         />
-        <p className={checked ? "input-text input-text-selected" : "input-text"}>{label}</p>
+      <p className={checked ? "input-text input-text-selected" : "input-text"}>{title}</p>
       </div>
     );
   }
 }
 
 FormInput.PropTypes = {
-  label: PropTypes.string,
+  title: PropTypes.string,
   setOption: PropTypes.func,
 }
 

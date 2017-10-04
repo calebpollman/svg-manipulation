@@ -8,13 +8,13 @@ class FormCheckBox extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (e, label) => {
+  handleClick = (e, title) => {
     e.preventDefault();
-    this.props.handleClick(label);
+    this.props.handleClick(title);
   }
 
   render () {
-    const {checked, label} = this.props;
+    const {checked, title} = this.props;
     let path = null, classNames = 'checkbox-icon ';
     if (checked) {
       classNames += 'check-icon';
@@ -26,7 +26,7 @@ class FormCheckBox extends Component {
 
     return (
       <div>
-        <svg onClick={(e) => this.handleClick(e, label)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <svg onClick={(e) => this.handleClick(e, title)} className={classNames} fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 0h24v24H0z" fill="none"/>
           {path}
         </svg>

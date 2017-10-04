@@ -3,15 +3,21 @@ import PropTypes from 'prop-types';
 import SvgPreview from '../Svg/SvgPreview';
 import FormInput from './FormInput';
 
-const FormOptions = ({optionList, tempSelect, setOption, showOptions}) => {
+const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions}) => {
   optionList = Object.entries(optionList);
   const options = optionList.map((option, i) => {
+    const title = option[1].title;
+    let value = option[1].value;
+    const disabled = !isChrome && title === 'Path Manipulation';
+    value = disabled ? false : value;
+
     return <FormInput
+      disabled={disabled}
       key={i}
-      label={option[1].title}
+      title={title}
       setOption={setOption}
       type={option[0]}
-      value={option[1].value}
+      value={value}
     />;
   });
 

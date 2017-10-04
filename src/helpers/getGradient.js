@@ -1,14 +1,20 @@
-const getGradient = (svgContainer, type, fill, i, duration) => {
+import getRandomValue from './getRandomValue';
+
+const getGradient = (svgContainer, type, fill, i) => {
+
+  const colorQuantity = getRandomValue(4, 1, 0, false);
+  const colors = getColors(fill, colorQuantity);
+  const duration = parseInt(getRandomValue(9000, 3000, 0), 10);
+
   const defs = svgContainer.append('defs');
-  const colors = getColors(fill);
 
   const linearGradient = defs.append('linearGradient')
-	.attr('id', type + i)
-	.attr('x1','0%')
-	.attr('y1','0%')
-	.attr('x2','100%')
-	.attr('y2','0')
-	.attr('spreadMethod', 'repeat');
+  	.attr('id', type + i)
+    .attr('x1', `${getRandomValue(50, 50, 0, false)}%`)
+    .attr('y1', `${getRandomValue(50, 50, 0, false)}%`)
+    .attr('x2', `${getRandomValue(50, 50, 0, false)}%`)
+    .attr('y2', `${getRandomValue(50, 50, 0, false)}%`)
+  	.attr('spreadMethod', 'pad');
 
   linearGradient.selectAll('.stop')
   	.data(colors)
@@ -22,28 +28,18 @@ const getGradient = (svgContainer, type, fill, i, duration) => {
   	.attr('dur', duration)
   	.attr('repeatCount','indefinite');
 
-  return `url(#fill${i})`;
+  return `url(#${type}${i})`;
 }
 
-// REFACTOR
-const getColors = (fill) => {
-  let colors = [];
+const getColors = (fill, colorQuantity) => {
+  let colors = new Array(colorQuantity).fill();
   let increment = 0.0;
 
-  fill = fill.toLowerCase();
-
-  // if (fill === '#000000' || fill === '#ffffff') {
-  //   for (var j = 0; j <= 8; j++) {
-  //     colors.push(fill);
-  //   }
-  //   return colors;
-  // }
-
-  for (var i = 0; i <= 8; i++) {
-    const color = shadeColor(fill, increment);
-    colors.push(color);
+  colors = colors.map((i) => {
+    i = shadeColor(fill, increment);
     increment += -0.1;
-  }
+    return i;
+  });
 
   return colors;
 }
