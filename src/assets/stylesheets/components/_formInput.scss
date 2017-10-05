@@ -15,14 +15,20 @@
   }
 
   &-disabled {
-    .input-text {
+    .input-text, :hover {
       color: $dark-slate-grey;
     }
-    .outline-icon {
+    .outline-icon, :hover {
       fill: $dark-slate-grey;
     }
     &:hover {
       cursor: not-allowed;
+      .outline-icon {
+        fill: $dark-slate-grey;
+      }
+      .input-text {
+        color: $dark-slate-grey;
+      }
     }
   }
 }
