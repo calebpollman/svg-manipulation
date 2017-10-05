@@ -4,9 +4,21 @@
   flex-direction: row;
   padding-top: 2px;
   padding-left: 1vw;
+
+  &:hover {
+    .input-text {
+      color: $light-grey;
+    }
+    .outline-icon {
+      fill: $light-grey;
+    }
+  }
+
   &-disabled {
-    .input-text, .outline-icon {
+    .input-text {
       color: $dark-slate-grey;
+    }
+    .outline-icon {
       fill: $dark-slate-grey;
     }
     &:hover {
@@ -22,7 +34,7 @@
   margin: 0;
   margin-left: 0.4vw;
   padding-bottom: 6px;
-  transition: all 0.1s linear;
+  transition: all 0.3s linear;
 
   &-disabled {
     font-size: 3.2vw;
@@ -31,4 +43,20 @@
 
 .input-text-selected {
   color: $light-grey;
+}
+
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
+  .input-text {
+    font-size: 1.6vw;
+    padding-bottom: 0;
+    padding-top: 2px;
+  }
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
+  .input-text {
+    font-size: 2vh;
+    letter-spacing: 0.1vh;
+    padding-top: 2px;
+  }
 }

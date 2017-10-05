@@ -21,18 +21,20 @@ class FormContainer extends Component {
   }
 
   render() {
-    const {isChrome, optionList, selectedTarget, setOption, showForm, svgList} = this.props;
+    const {hideForm, isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateTarget} = this.props;
     const {showAbout} = this.state;
-    
+
     let body = null;
     if (!showAbout) {
       body = (
         <FormBody
+          hideForm={hideForm}
           isChrome={isChrome}
           optionList={optionList}
           selectedTarget={selectedTarget}
           setOption={setOption}
           svgList={svgList}
+          updateTarget={updateTarget}
         />
       );
     } else {

@@ -30,7 +30,14 @@
   visibility: hidden;
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
+  .form-button {
+    font-size: 3vw;
+    letter-spacing: 0.1vw;
+  }
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
   .form-button {
     font-size: 2.78vh;
     letter-spacing: 0.1vh;

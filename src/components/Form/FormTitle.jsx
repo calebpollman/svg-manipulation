@@ -4,8 +4,8 @@ import InfoIcon from '../Icons/InfoIcon';
 
 const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
   return (
-    <div>
-    <p className="select-label tk-europa">{formTitle}</p>
+    <div className="title-container">
+      <p className="title-text tk-europa">{formTitle}</p>
       <div
         className="title-icon-container"
         onClick={toggleAbout}

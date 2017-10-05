@@ -1,6 +1,7 @@
 .form-background {
   background-color: $transparent-chrome;
   height: 100%;
+  left: 0;
   opacity: 1.0;
   position: absolute;
   width: 100%;
@@ -8,19 +9,19 @@
   transform: translateY(0);
   transition: all 0.3s ease-out;
   visibility: visible;
-}
 
-.form-background-hidden {
-  opacity: 0.0;
-  transform: translateY(20vh);
-  transition: all 0.1s ease-in;
-  visibility: none;
+  &-hidden {
+    opacity: 0.0;
+    transform: translateY(6vh);
+    transition: all 0.1s ease-in;
+    visibility: none;
+  }
 }
 
 .form-container {
   background-color: $transparent-black;
   height: auto;
-  margin: 12% 0 0 35%;
+  margin: 6% 0 0 35%;
   position: relative;
   width: 30%;
 }
@@ -33,14 +34,18 @@
   width: 80%;
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: landscape) {
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
   .form-container {
-    margin: 16% 0 0 10%;
+    margin: 6% 0 0 10%;
     width: 80%;
+  }
+
+  .form-inner-container {
+    padding: 5% 0;
   }
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
   .form-container {
     margin: 10% 0 0 10%;
     width: 80%;

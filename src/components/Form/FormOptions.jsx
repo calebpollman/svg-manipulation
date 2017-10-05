@@ -9,7 +9,6 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
     const title = option[1].title;
     let value = option[1].value;
     const disabled = !isChrome && title === 'Path Manipulation';
-    
     value = disabled ? false : value;
 
     return <FormInput
@@ -25,7 +24,9 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
   return (
     <div className={showOptions ? "options-container" : "options-container options-container-hidden"}>
       <SvgPreview tempSelect={tempSelect} />
-      {options}
+      <div className="options-subcontainer">
+        {options}
+      </div>
     </div>
   );
 }

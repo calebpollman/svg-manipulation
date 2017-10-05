@@ -34,14 +34,14 @@
   }
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: landscape) {
+@media only screen and (max-device-width: $landscape-query) and (orientation: landscape) {
   .toggle-icon {
     height: 4vw;
     width: 4vw;
   }
 }
 
-@media only screen and (max-device-width: 736px) and (orientation: portrait) {
+@media only screen and (max-device-width: $portrait-query) and (orientation: portrait) {
   .toggle-icon-container {
     right: 4vw;
     top: 4vw;

@@ -6,11 +6,15 @@
 
 .outline-icon {
   fill: $slate-grey;
-  &:hover {
-    fill: $light-grey;
-  }
 }
 
 .check-icon {
   fill: $light-grey;
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
+  .checkbox-icon {
+    height: 2.4vh;
+    width: 2.4vh;
+  }
 }

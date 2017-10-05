@@ -1,6 +1,11 @@
+// Colors
 $chrome: rgb(227,222,219);
 $dark-slate-grey: rgb(47,79,79);
 $light-grey: rgb(192,202,202);
 $slate-grey: rgb(112,128,144);
 $transparent-black: rgba(0,0,0,0.8);
 $transparent-chrome: rgba(227,222,219,0.6);
+
+// Media Break Points
+$landscape-query: 1024px;
+$portrait-query: 414px;

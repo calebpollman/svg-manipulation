@@ -1,11 +1,18 @@
-.preview-container {
-  height: auto;
+.preview-svg {
+  height: 10vw;
   overflow: visible;
   width: 100%;
 }
 
-.preview-svg {
-  height: auto;
-  overflow: visible;
-  width: 100%;
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
+  .preview-svg {
+    height: 18vw;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
+  .preview-svg {
+    height: 14vh;
+  }
 }

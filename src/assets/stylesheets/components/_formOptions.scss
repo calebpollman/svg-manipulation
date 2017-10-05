@@ -1,16 +1,44 @@
 .options-container {
-  // height: 15vw;
-  height: auto;
+  height: 23vw;
   margin: 1vw 0;
   opacity: 1.0;
   position: relative;
   transition: all 0.2s ease-in-out;
   visibility: visible;
   width: 100%;
+
+  &-hidden {
+    height: 0;
+    opacity: 0.0;
+    visibility: collapse;
+  }
 }
 
-.options-container-hidden {
-  height: 0;
-  opacity: 0.0;
-  visibility: collapse;
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
+  .options-container {
+    display: flex;
+    height: 20vw;
+    width: 100%;
+    &-hidden {
+      height: 0;
+      opacity: 0.0;
+      visibility: collapse;
+    }
+  }
+
+  .options-subcontainer {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
+  .options-container {
+    height: 39vh;
+    margin-top: 2vh;
+    &-hidden {
+      height: 0;
+      opacity: 0.0;
+      visibility: collapse;
+    }
+  }
 }

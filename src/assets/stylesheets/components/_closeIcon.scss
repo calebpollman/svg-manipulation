@@ -6,3 +6,17 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (max-width: $landscape-query) and (orientation: landscape) {
+  .close-icon {
+    height: 3vw;
+    width: 3vw;
+  }
+}
+
+@media only screen and (max-width: $portrait-query) and (orientation: portrait) {
+  .close-icon {
+    height: 3vh;
+    width: 3vh;
+  }
+}
