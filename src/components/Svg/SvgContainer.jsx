@@ -6,11 +6,11 @@ const d3 = require('d3');
 
 class SvgContainer extends Component {
   componentDidMount() {
-		// this.addSvg();
+		this.addSvg();
   }
 
 	componentDidUpdate() {
-		// this.addSvg();
+		this.addSvg();
   }
 
 	shouldComponentUpdate(nextProps, nextState) {
