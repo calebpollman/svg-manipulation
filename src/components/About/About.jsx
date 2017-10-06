@@ -7,7 +7,9 @@ const About = (props) => {
       <br/><br/>
       SVGs created by Caleb Pollman with the exception of the Docker logo.
       <br/><br/>
-      Source code can be found on <a className="about-text" href="https://github.com/calebpollman/svg-manipulation">github</a>.
+      Source code can be found on <a className="about-text" href="https://github.com/calebpollman/svg-manipulation" rel='noreferrer noopener' target="_blank">github</a>.
+      <br/><br/>
+      Find me on <a className="about-text" href="https://linkedin.com/in/calebpollman" rel='noreferrer noopener' target="_blank">linkedin</a>.
     </p>
   );
 }

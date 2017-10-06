@@ -9,6 +9,7 @@ const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
       <div
         className="title-icon-container"
         onClick={toggleAbout}
+        title={!showAbout ? 'Information!' : 'Back to fun!'}
       >
         {!showAbout ? <InfoIcon /> : <CloseIcon />}
       </div>
