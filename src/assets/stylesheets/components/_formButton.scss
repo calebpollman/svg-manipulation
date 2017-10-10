@@ -10,11 +10,11 @@
   width: 100%;
   &:hover {
     box-shadow:
-      inset 200px 0 0 0 $chrome,
-      inset -200px 0 0 0 $chrome,
+      inset 300px 0 0 0 $chrome,
+      inset -300px 0 0 0 $chrome,
       inset 0 100px 0 0 $transparent-chrome,
       inset 0 -100px 0 0 $transparent-chrome;
-    color: $dark-slate-grey;
+    color: $transparent-black;
     cursor: pointer;
   }
 }

@@ -1,4 +1,5 @@
 const staticSvgs = {
+  'previous luxury': require('./svgFiles/everyPathNeedsAPoint.svg'),
   'march 2016': require('./svgFiles/whatsTheDealWithTheseDots.svg'),
   'that water': require('./svgFiles/thatWater.svg'),
   'small': require('./svgFiles/smallRed.svg'),
