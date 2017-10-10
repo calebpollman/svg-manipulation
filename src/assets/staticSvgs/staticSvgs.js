@@ -1,5 +1,6 @@
 const staticSvgs = {
-  'that water': require('./svgFiles/thatWaterComplex.svg'),
+  'test time': require('./svgFiles/whatsTheDealWithTheseDots.svg'),
+  'that water': require('./svgFiles/thatWater.svg'),
   'small': require('./svgFiles/smallRed.svg'),
   'medium': require('./svgFiles/smallBlackTest.svg'),
   'large': require('./svgFiles/testSvg.svg'),
