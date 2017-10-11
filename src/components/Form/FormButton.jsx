@@ -10,12 +10,12 @@ class FormButton extends Component {
   }
 
   render() {
-    const {buttonText, showButton} = this.props;
+    const {buttonText, showButton, showForm} = this.props;
 
     return (
       <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
         <button
-          className="form-button tk-europa"
+          className={showForm ? "form-button tk-europa" : "form-button tk-europa form-button-hidden"}
           onClick={(event) => this.submitForm(event)}
         >
           {buttonText}
@@ -27,7 +27,8 @@ class FormButton extends Component {
 
 FormButton.PropTypes = {
   buttonText: PropTypes.string,
-  showButon: PropTypes.string,
+  showButton: PropTypes.string,
+  showForm: PropTypes.boolean,
   submitForm: PropTypes.func,
 }
 

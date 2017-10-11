@@ -33,6 +33,7 @@ class FormContainer extends Component {
           optionList={optionList}
           selectedTarget={selectedTarget}
           setOption={setOption}
+          showForm={showForm}
           svgList={svgList}
           updateTarget={updateTarget}
         />

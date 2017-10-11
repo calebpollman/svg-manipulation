@@ -45,9 +45,9 @@ class FormBody extends Component {
   }
 
   render() {
-    const {isChrome, optionList, selectedTarget, setOption, svgList} = this.props;
+    const {showForm, isChrome, optionList, selectedTarget, setOption, svgList} = this.props;
     const {showButton, showOptions, tempSelect} = this.state;
-    
+
     return (
       <div>
         <FormSelect
@@ -66,6 +66,7 @@ class FormBody extends Component {
         />
         <FormButton
           buttonText="View SVG"
+          showForm={showForm}
           submitForm={this.submitForm}
           showButton={showButton}
         />
