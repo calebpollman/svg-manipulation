@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ThatEss = ({showForm}) => {
   return (
@@ -11,6 +12,10 @@ const ThatEss = ({showForm}) => {
       </g>
     </svg>
   );
+}
+
+ThatEss.PropTypes = {
+  showForm: PropTypes.func,
 }
 
 export default ThatEss;

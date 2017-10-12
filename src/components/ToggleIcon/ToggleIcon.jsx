@@ -24,7 +24,7 @@ class ToggleIcon extends Component {
 
 ToggleIcon.PropTypes = {
   hideForm: PropTypes.func,
-  showForm: PropTypes.bool
+  showForm: PropTypes.bool,
 }
 
 export default ToggleIcon;

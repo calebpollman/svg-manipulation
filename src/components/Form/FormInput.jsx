@@ -43,8 +43,11 @@ class FormInput extends Component {
 }
 
 FormInput.PropTypes = {
-  title: PropTypes.string,
+  disabled: PropTypes.bool,
   setOption: PropTypes.func,
+  title: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.bool,
 }
 
 export default FormInput;

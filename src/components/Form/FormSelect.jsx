@@ -12,13 +12,18 @@ class FormSelect extends Component {
       selectedTarget: this.props.selectedTarget,
     }
 
-    this.toggleList = this.toggleList.bind(this);
     this.selectOption = this.selectOption.bind(this);
+    this.toggleList = this.toggleList.bind(this);
   }
 
-  updateSvgList = (svgList, selectedTarget) => {
-    return svgList.filter((i) => {
-      return i !== selectedTarget;
+  selectOption = (event) => {
+    event.preventDefault();
+    let value = event.target.getAttribute('value');
+    this.props.updateSelect(value);
+    this.props.toggleOptions(true);
+    this.toggleList();
+    this.setState({
+      selectedTarget: value
     });
   }
 
@@ -31,14 +36,9 @@ class FormSelect extends Component {
     });
   }
 
-  selectOption = (event) => {
-    event.preventDefault();
-    let value = event.target.getAttribute('value');
-    this.props.updateSelect(value);
-    this.props.toggleOptions(true);
-    this.toggleList();
-    this.setState({
-      selectedTarget: value
+  updateSvgList = (svgList, selectedTarget) => {
+    return svgList.filter((i) => {
+      return i !== selectedTarget;
     });
   }
 
@@ -62,25 +62,27 @@ class FormSelect extends Component {
     });
 
     return (
-        <ul className={isOpen ? "form-select add-background" : "form-select"}>
-          <li
-            className="default-option option-text tk-europa"
-            onClick={this.toggleList}
-          >
-            {selectedTarget}
-            {isOpen ? <ShrinkIcon /> : <ExpandIcon />}
-          </li>
-          <div className={isOpen ? "open" : "closed"}>
-            {list}
-          </div>
-        </ul>
+      <ul className={isOpen ? "form-select add-background" : "form-select"}>
+        <li
+          className="default-option option-text tk-europa"
+          onClick={this.toggleList}
+        >
+          {selectedTarget}
+          {isOpen ? <ShrinkIcon /> : <ExpandIcon />}
+        </li>
+        <div className={isOpen ? "open" : "closed"}>
+          {list}
+        </div>
+      </ul>
     );
   }
 }
 
 FormSelect.PropTypes = {
-  selectedTarget: PropTypes.string.isRequired,
-  svgList: PropTypes.array.isRequired,
+  hideButton: PropTypes.bool,
+  selectedTarget: PropTypes.string,
+  svgList: PropTypes.array,
+  toggleOptions: PropTypes.func,
   updateOption: PropTypes.func
 }
 

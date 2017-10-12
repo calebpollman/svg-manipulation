@@ -1,6 +1,6 @@
 import React from 'react';
 
-const About = (props) => {
+const About = () => {
   return (
     <p className="about-text tk-europa">
       Created using ReactJS, D3js, ES6, HTML5, and SCSS.

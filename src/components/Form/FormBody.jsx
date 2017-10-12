@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import FormButton from './FormButton';
 import FormOptions from './FormOptions';
 import FormSelect from './FormSelect';
@@ -73,6 +74,16 @@ class FormBody extends Component {
       </div>
     );
   }
+}
+
+FormBody.PropTypes = {
+  isChrome: PropTypes.bool,
+  optionList: PropTypes.object,
+  selectedTarget: PropTypes.string,
+  setOption: PropTypes.func,
+  showForm: PropTypes.bool,
+  svgList: PropTypes.array,
+  updateTarget: PropTypes.func,
 }
 
 export default FormBody;

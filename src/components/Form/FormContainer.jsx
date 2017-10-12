@@ -23,7 +23,7 @@ class FormContainer extends Component {
   render() {
     const {hideForm, isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateTarget} = this.props;
     const {showAbout} = this.state;
-
+    
     let body = null;
     if (!showAbout) {
       body = (
@@ -60,12 +60,14 @@ class FormContainer extends Component {
 }
 
 FormContainer.PropTypes = {
-  hideForm: PropTypes.func.isRequired,
-  selectedTarget: PropTypes.string.isRequired,
+  hideForm: PropTypes.func,
+  isChrome: PropTypes.bool,
+  optionList: PropTypes.object,
+  selectedTarget: PropTypes.string,
+  setOption: PropTypes.func,
   showForm: PropTypes.bool,
   svgList: PropTypes.array,
   svgOptions: PropTypes.object,
-  updateOptions: PropTypes.func,
   updateTarget: PropTypes.func,
 }
 

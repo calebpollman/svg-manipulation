@@ -15,7 +15,7 @@ class FormCheckBox extends Component {
 
   render () {
     const {checked, disabled, title} = this.props;
-
+    
     let path = null, classNames = 'checkbox-icon ';
     if (checked) {
       classNames += 'check-icon';
@@ -28,7 +28,7 @@ class FormCheckBox extends Component {
     return (
       <div>
         <svg
-          onClick={!disabled ? (event) => this.handleClick(event, title) : ''} 
+          onClick={!disabled ? (event) => this.handleClick(event, title) : ''}
           className={classNames}
           fill="#000000"
           height="24"
@@ -46,6 +46,9 @@ class FormCheckBox extends Component {
 
 FormCheckBox.PropTypes = {
   checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  handleClick: PropTypes.func,
+  title: PropTypes.string,
 }
 
 export default FormCheckBox;

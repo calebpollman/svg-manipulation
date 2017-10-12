@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CloseIcon from '../Icons/CloseIcon';
 import InfoIcon from '../Icons/InfoIcon';
 
@@ -15,6 +16,12 @@ const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
       </div>
     </div>
   )
+}
+
+FormTitle.PropTypes = {
+  formTitle: PropTypes.string,
+  showAbout: PropTypes.bool,
+  toggleAbout: PropTypes.func,
 }
 
 export default FormTitle;

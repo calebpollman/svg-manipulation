@@ -13,7 +13,7 @@ class Index extends Component {
       isChrome: null,
       optionList: optionList,
       resetSvg: false,
-      selectedTarget: 'that water',
+      selectedTarget: 'previous luxury',
       showForm: true,
       svgList: [],
     };
@@ -30,7 +30,7 @@ class Index extends Component {
     const browser = navigator.userAgent;
     let {isChrome} = this.state;
 
-    if (browser.indexOf("Chrome") > -1) {
+    if (browser.indexOf('Chrome') > -1) {
       isChrome = true;
     } else {
       isChrome = false;
@@ -83,7 +83,6 @@ class Index extends Component {
           selectedTarget={selectedTarget}
           showForm={showForm}
           svgList={svgList}
-          updateOptions={this.updateOptions}
           updateTarget={this.updateTarget}
         />
         <SvgContainer

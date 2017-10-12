@@ -42,8 +42,9 @@ class SvgContainer extends Component {
 }
 
 SvgContainer.PropTypes = {
+  optionList: PropTypes.object,
 	resetSvg: PropTypes.bool,
-	selectedOption: PropTypes.string
+	selectedOption: PropTypes.string,
 }
 
 export default SvgContainer;

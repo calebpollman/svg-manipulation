@@ -32,7 +32,11 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
 }
 
 FormOptions.PropTypes = {
+  isChrome: PropTypes.bool,
+  optionList: PropTypes.object,
+  setOption: PropTypes.func,
   showOptions: PropTypes.bool,
+  tempSelect: PropTypes.string, 
 }
 
 export default FormOptions;
