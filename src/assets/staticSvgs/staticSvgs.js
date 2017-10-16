@@ -5,6 +5,7 @@ const staticSvgs = {
   'repetition': require('./svgFiles/thatRepetition.svg'),
   'that water': require('./svgFiles/thatWater.svg'),
   'docker': require('./svgFiles/docker.svg'),
+  'test test': require('./svgFiles/fruit_menu.svg'),
 };
 
 export default staticSvgs;

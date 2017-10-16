@@ -1,91 +1,31 @@
-// used to pull ony these attributes from the svg, groups, paths, etc.
-const svgAttributes = ['class', 'd', 'id', 'viewBox', 'fill', 'fill-opacity', 'fill-rule', 'style', 'stroke'];
-
 // returns javascript object with svg elements and attributes
 const getSvgInfo = (input) => {
+
   const parser = new DOMParser();
   const doc = parser.parseFromString(input, "image/svg+xml");
   const svgJson = xmlToJson(doc);
-  const svgObject = getTarget(svgJson, 'svg');
 
-  const svgAttrs = svgObject.attributes;
+  let svgAndShapeList = ['svg', 'rect', 'line', 'polyline', 'circle', 'ellipse', 'polygon', 'path'];
+  svgAndShapeList = svgAndShapeList.map((i) => {
+    return {[i]: getTargets(svgJson, i)};
+  })
 
-  // WHAT ABOUT RECTS, CIRCLES, ETC ????????
-  const svgGroups = getSvgGroupsAndPaths(svgObject);
-
-  const finalSvgObject = {
-    svg: {
-      attributes: svgAttrs,
-      groupsAndPaths: svgGroups,
-    }
-  }
-  return finalSvgObject;
+  return svgAndShapeList;
 }
 
-const getSvgGroupsAndPaths = (input) => {
-  let groupsAndPaths = [];
-  const groups = input.g;
-
-  if (groups !== undefined) {
-    if (groups.length !== undefined) {
-      for (const key in Object.keys(groups)) {
-        const group = groups[key];
-        groupsAndPaths.push({
-          groups: {
-            attrs: getAttributes(group, svgAttributes),
-            path: group.path,
-          }
-        });
-      }
-    } else {
-      groupsAndPaths.push({
-        groups: {
-          attrs: getAttributes(groups, svgAttributes),
-          path: groups.path,
-        }
-      });
-    }
-  } else {
-    const paths = input.path;
-    if (paths.length !== undefined) {
-      for (const i in Object.keys(paths)) {
-        groupsAndPaths.push({
-          path: paths[i],
-        });
-      }
-    } else {
-      groupsAndPaths.push({
-        path: paths,
-      });
-    }
-  }
-  return groupsAndPaths;
-}
-
-const getAttributes = (input, attrs) => {
-  let attrObj = {};
+// iterates over input, gets target objects, and returns targetArray
+const getTargets = (input, target, targetArray = []) => {
   for (const key of Object.keys(input)) {
-    for (var i = 0; i < attrs.length; i++) {
-      if (key === attrs[i]) {
-        attrObj[key] = input[key];
-      }
-    }
-  }
-  return attrObj;
-}
-
-// get svg root
-const getTarget = (input, target) => {
-  for (const key of Object.keys(input)) {
-    if (key !== '0' && typeof(input) === 'object') {
-      const temp = input[key];
-      if (key !== target) {
-        getTarget(temp, target);
+    const temp = input[key];
+    if (typeof(temp) === 'object') {
+      if (key === target) {
+        targetArray.push(temp);
       } else {
-        return temp;
+        getTargets(temp, target, targetArray);
       }
     }
   }
+  return targetArray;
 }
 
 // Changes XML to JSON
