@@ -2,12 +2,12 @@ import getRandomValue from './getRandomValue';
 import getNewPath from './getNewPath';
 import getGradient from './getGradient';
 
-const animateSvg = (svgGroup, groupId, path, i=0, svgContainer, options) => {
-
-  const fillColor = path[1].fill === undefined ? '#000000' : path[1].fill;
+const animateSvg = (svgGroup, groupId, pathObject, i=0, svgContainer, options) => {
+  
+  const path = pathObject.d;
+  const fillColor = pathObject.fill === undefined ? '#000000' : pathObject.fill;
   const strokeColor = fillColor;
   const duration = parseInt(getRandomValue(12000, 3000, 0), 10);
-  const d = path[0].d;
 
   let fill = options['Fill Gradients'] ? getGradient(svgContainer, 'fill', fillColor, i) : fillColor;
   fill = options['Remove Fills'] ? 'none' : fill;
@@ -23,11 +23,11 @@ const animateSvg = (svgGroup, groupId, path, i=0, svgContainer, options) => {
     .attr('stroke-linejoin', 'round')
     .attr('stroke', stroke)
     // fallback path for non-chrome browsers
-    .attr('d', d);
+    .attr('d', path);
 
   const keyFrame = () => {
     return {
-      d: options['Path Manipulation'] ? getNewPath(d, 10) : `path("${d}")`,
+      d: options['Path Manipulation'] ? getNewPath(path, 10) : `path("${path}")`,
       strokeWidth: options['Remove Strokes'] ? 0 : strokeWidth(),
     }
   }

@@ -5,7 +5,7 @@ const getSvgInfo = (input) => {
   const doc = parser.parseFromString(input, "image/svg+xml");
   const svgJson = xmlToJson(doc);
 
-  let svgAndShapeList = ['svg', 'rect', 'line', 'polyline', 'circle', 'ellipse', 'polygon', 'path'];
+  let svgAndShapeList = ['svg', 'rect', 'line', 'polyline', 'circle', 'ellipse', 'polygon', 'path', 'style'];
   svgAndShapeList = svgAndShapeList.map((i) => {
     return {[i]: getTargets(svgJson, i)};
   })

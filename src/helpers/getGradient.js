@@ -1,7 +1,7 @@
 import getRandomValue from './getRandomValue';
 
 const getGradient = (svgContainer, type, fill, i) => {
-
+  
   const colorQuantity = getRandomValue(4, 1, 0, false);
   const colors = getColors(fill, colorQuantity);
   const duration = parseInt(getRandomValue(9000, 3000, 0), 10);
