@@ -4,8 +4,8 @@ import ThatEssIcon from '../Icons/ThatEssIcon';
 
 class ToggleIcon extends Component {
 
-  hideForm = () => {
-    this.props.hideForm();
+  toggleForm = () => {
+    this.props.toggleForm();
   }
 
   render() {
@@ -14,7 +14,7 @@ class ToggleIcon extends Component {
     return (
       <div
         className="toggle-icon-container"
-        onClick={this.hideForm}
+        onClick={this.toggleForm}
       >
         <ThatEssIcon showForm={showForm} />
       </div>
@@ -23,7 +23,7 @@ class ToggleIcon extends Component {
 }
 
 ToggleIcon.PropTypes = {
-  hideForm: PropTypes.func,
+  toggleForm: PropTypes.func,
   showForm: PropTypes.bool,
 }
 

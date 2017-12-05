@@ -1,6 +1,5 @@
 // returns javascript object with svg elements and attributes
 const getSvgInfo = (input) => {
-
   const parser = new DOMParser();
   const doc = parser.parseFromString(input, "image/svg+xml");
   const svgJson = xmlToJson(doc);

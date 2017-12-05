@@ -2,8 +2,8 @@ import getRandomValue from './getRandomValue';
 import getNewPath from './getNewPath';
 import getGradient from './getGradient';
 
-const animateSvg = (svgGroup, groupId, pathObject, i=0, svgContainer, options) => {
-  
+const animateSvg = (svgContainer, groupId, pathObject, i=0, options) => {
+
   const path = pathObject.d;
   const fillColor = pathObject.fill === undefined ? '#000000' : pathObject.fill;
   const strokeColor = fillColor;
@@ -17,7 +17,7 @@ const animateSvg = (svgGroup, groupId, pathObject, i=0, svgContainer, options) =
   let stroke = options['Remove Strokes'] ? false : true;
   stroke = options['Stroke Gradients'] ? getGradient(svgContainer, 'stroke', strokeColor, i) : strokeColor;
 
-  svgGroup.append('path')
+  svgContainer.append('path')
     .attr('id', groupId + i)
     .attr('fill', fill)
     .attr('stroke-linejoin', 'round')

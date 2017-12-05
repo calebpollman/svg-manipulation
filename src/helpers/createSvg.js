@@ -25,11 +25,9 @@ const createSvg = (target, input, options) => {
     .attr('overflow', 'visible')
     .classed('svg-content-responsive', true);
 
-  const svgGroup = svgContainer.append('g');
-
   svgArray.map((i, x) => {
     const groupId = uuidv4();
-    return animateSvg(svgGroup, groupId, i, x, svgContainer, options);
+    return animateSvg(svgContainer, groupId, i, x, options);
   })
 }
 

@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class FormButton extends Component {
-  submitForm = (event) => {
+  buttonAction = (event) => {
     event.preventDefault();
     if (event.type === 'click') {
-      this.props.submitForm();
+      this.props.buttonAction();
     }
   }
 
@@ -16,7 +16,7 @@ class FormButton extends Component {
       <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
         <button
           className={showForm ? "form-button tk-europa" : "form-button tk-europa form-button-hidden"}
-          onClick={(event) => this.submitForm(event)}
+          onClick={(event) => this.buttonAction(event)}
         >
           {buttonText}
         </button>
@@ -26,10 +26,10 @@ class FormButton extends Component {
 }
 
 FormButton.PropTypes = {
+  buttonAction: PropTypes.func,
   buttonText: PropTypes.string,
   showButton: PropTypes.bool,
   showForm: PropTypes.bool,
-  submitForm: PropTypes.func,
 }
 
 export default FormButton;

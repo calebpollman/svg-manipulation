@@ -29,7 +29,7 @@ class FormBody extends Component {
     let value = this.state.tempSelect;
     this.props.updateTarget(value);
     this.toggleOptions();
-    this.props.hideForm();
+    this.props.toggleForm();
   }
 
   toggleOptions = (value) => {
@@ -68,7 +68,7 @@ class FormBody extends Component {
         <FormButton
           buttonText="View SVG"
           showForm={showForm}
-          submitForm={this.submitForm}
+          buttonAction={this.submitForm}
           showButton={showButton}
         />
       </div>

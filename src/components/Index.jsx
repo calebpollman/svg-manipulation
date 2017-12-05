@@ -18,12 +18,14 @@ class Index extends Component {
       svgList: [],
     };
 
-    this.hideForm = this.hideForm.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
+    this.keyFormToggle = this.keyFormToggle.bind(this);
   }
 
   componentWillMount() {
     this.translateSvgList(staticSvgs);
     this.checkBrowser();
+    document.addEventListener('keydown', this.keyFormToggle);
   }
 
   checkBrowser = () => {
@@ -39,10 +41,14 @@ class Index extends Component {
     this.setState({isChrome});
   }
 
-  hideForm = () => {
+  toggleForm = () => {
     this.setState({
       showForm: !this.state.showForm,
     });
+  }
+
+  keyFormToggle(e) {
+    if (e.keyCode === 27 && this.state.showForm === false) this.toggleForm();
   }
 
   setOption = (type, label, checked) => {
@@ -72,11 +78,11 @@ class Index extends Component {
     return (
       <div className="main-container">
         <ToggleIcon
-          hideForm={this.hideForm}
+          toggleForm={this.toggleForm}
           showForm={showForm}
         />
         <FormContainer
-          hideForm={this.hideForm}
+          toggleForm={this.toggleForm}
           isChrome={isChrome}
           optionList={optionList}
           setOption={this.setOption}
