@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SvgPreview from '../Svg/SvgPreview';
 import FormInput from './FormInput';
 
-const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions}) => {
+const FormOptions = ({isChrome, optionList, tempSelect, setOption, showContents, svgInfo}) => {
   optionList = Object.entries(optionList);
   const options = optionList.map((option, i) => {
     const title = option[1].title;
@@ -22,8 +21,7 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
   });
 
   return (
-    <div className={showOptions ? "options-container" : "options-container options-container-hidden"}>
-      <SvgPreview tempSelect={tempSelect} />
+    <div className={showContents ? "options-container" : "options-container options-container-hidden"}>
       <div className="options-subcontainer">
         {options}
       </div>

@@ -21,7 +21,7 @@
 
 .form-container {
   background-color: $transparent-black;
-  height: auto;
+  min-height: 16vw;
   margin: 6% 0 0 35%;
   position: relative;
   width: 30%;
@@ -38,6 +38,7 @@
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {
   .form-container {
     margin: 6% 0 0 10%;
+    min-height: 36%;
     width: 80%;
   }
 

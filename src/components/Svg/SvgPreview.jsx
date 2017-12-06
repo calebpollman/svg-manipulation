@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import staticSvgs from '../../assets/staticSvgs/staticSvgs';
+import createPreview from '../../helpers/createPreview';
+
+const d3 = require('d3');
 
 class SvgPreview extends Component {
   componentDidMount() {
@@ -12,21 +14,30 @@ class SvgPreview extends Component {
   }
 
   addSvg = () => {
-    const {tempSelect} = this.props;
-    const preview = staticSvgs[tempSelect];
-    const target = this.svg;
-    target.innerHTML = preview;
+    const {svgInfo} = this.props;
+    // clear prior svg
+		d3.select(this.svg).html(null);
+
+    // prevent actions if svgInfo is null
+    if (svgInfo) {      
+      const target = this.svg;
+      createPreview(target, svgInfo)
+    }
   }
 
   render() {
+    const {showContents} = this.props;
+
     return (
-      <div className="preview-svg" ref={(elem) => { this.svg = elem; }} />
+      <div className={showContents ? "svg-preview" : "svg-preview svg-preview-hidden"}>
+        <svg ref={(elem) => { this.svg = elem; }} />
+      </div>
     );
   }
 }
 
 SvgPreview.PropTypes = {
-  tempSelect: PropTypes.string,
+  svgInfo: PropTypes.object,
 }
 
 export default SvgPreview;

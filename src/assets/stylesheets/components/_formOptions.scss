@@ -1,14 +1,13 @@
 .options-container {
-  height: 23vw;
+  height: 13vw;
   margin: 1vw 0;
   opacity: 1.0;
   position: relative;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out, opacity 0.1s ease-in-out 0.1s;
   visibility: visible;
   width: 100%;
 
   &-hidden {
-    height: 0;
     opacity: 0.0;
     visibility: collapse;
   }

@@ -6,11 +6,9 @@ import handleOptions from './handleOptions';
 const d3 = require('d3');
 const uuidv4 = require('uuid/v4');
 
-const createSvg = (target, input, options) => {
+const createSvg = (target, svgInfo, options) => {
   options = handleOptions(options);
-  const svgInfo = getSvgInfo(input);
   const svgArray = getPaths(svgInfo);
-
   const viewBox = svgInfo[0].svg[0].attributes.viewBox;
 
   target.setAttribute('style','width:60%');

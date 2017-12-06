@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import getSvgInfo from '../helpers/getSvgInfo';
 import SvgContainer from "./Svg/SvgContainer";
 import FormContainer from './Form/FormContainer';
 import ToggleIcon from './ToggleIcon/ToggleIcon';
@@ -12,9 +13,11 @@ class Index extends Component {
     this.state = {
       isChrome: null,
       optionList: optionList,
+      resetPreview: false,
       resetSvg: false,
       selectedTarget: 'previous luxury',
       showForm: true,
+      svgInfo: null,
       svgList: [],
     };
 
@@ -23,6 +26,8 @@ class Index extends Component {
   }
 
   componentWillMount() {
+    const {selectedTarget} = this.state;
+    this.getPreviewInfo(selectedTarget);
     this.translateSvgList(staticSvgs);
     this.checkBrowser();
     document.addEventListener('keydown', this.keyFormToggle);
@@ -41,20 +46,25 @@ class Index extends Component {
     this.setState({isChrome});
   }
 
-  toggleForm = () => {
-    this.setState({
-      showForm: !this.state.showForm,
-    });
+  getPreviewInfo = (input) => { 
+    const svgInfo = getSvgInfo(staticSvgs[input]);
+    this.setState({svgInfo});
   }
-
-  keyFormToggle(e) {
-    if (e.keyCode === 27 && this.state.showForm === false) this.toggleForm();
+  
+  keyFormToggle(event) {
+    if (event.keyCode === 27 && this.state.showForm === false) this.toggleForm();
   }
 
   setOption = (type, label, checked) => {
     let optionList = this.state.optionList;
     optionList[type].value = checked;
     this.setState({optionList});
+  }
+
+  toggleForm = () => {
+    this.setState({
+      showForm: !this.state.showForm,
+    });
   }
 
   translateSvgList = (staticSvgs) => {
@@ -65,16 +75,17 @@ class Index extends Component {
     this.setState({svgList});
   }
 
-  updateTarget = (input) => {
+  updateTarget = (input, resetArg) => {
+    this.getPreviewInfo(input);
     this.setState({
       selectedTarget: input,
-      resetSvg: !this.state.resetSvg,
+      [resetArg]: !this.state[resetArg],
     });
   }
 
   render() {
-    const {isChrome, optionList, resetSvg, selectedTarget, showForm, svgList} = this.state;
-
+    const {isChrome, optionList, resetSvg, selectedTarget, showForm, svgInfo, svgList} = this.state;
+    
     return (
       <div className="main-container">
         <ToggleIcon
@@ -82,19 +93,22 @@ class Index extends Component {
           showForm={showForm}
         />
         <FormContainer
-          toggleForm={this.toggleForm}
+          getPreviewInfo={this.getPreviewInfo}
           isChrome={isChrome}
           optionList={optionList}
           setOption={this.setOption}
           selectedTarget={selectedTarget}
           showForm={showForm}
+          svgInfo={svgInfo}
           svgList={svgList}
+          toggleForm={this.toggleForm}
           updateTarget={this.updateTarget}
         />
         <SvgContainer
-          selectedTarget={selectedTarget}
-          resetSvg={resetSvg}
           optionList={optionList}
+          resetSvg={resetSvg}
+          selectedTarget={selectedTarget}
+          svgInfo={svgInfo}
         />
       </div>
     );

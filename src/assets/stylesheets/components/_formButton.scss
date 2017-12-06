@@ -18,20 +18,20 @@
     cursor: pointer;
   }
   &-hidden {
-    visibility: collapse;
+    visibility: none;
   }
 }
 
 .form-button-container {
   opacity: 1.0;
-  transition: all 0.3s 0.1s linear;
+  transition: all 0.3s linear;
   visibility: visible;
 }
 
 .hide-button {
   opacity: 0.0;
   transition: all 0.1s linear;
-  visibility: hidden;
+  visibility: collapse;
 }
 
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {

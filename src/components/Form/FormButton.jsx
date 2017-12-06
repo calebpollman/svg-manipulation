@@ -10,10 +10,10 @@ class FormButton extends Component {
   }
 
   render() {
-    const {buttonText, showButton, showForm} = this.props;
+    const {buttonText, showContents, showForm} = this.props;
 
     return (
-      <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
+      <div className={showContents ? "form-button-container" : "form-button-container hide-button"}>
         <button
           className={showForm ? "form-button tk-europa" : "form-button tk-europa form-button-hidden"}
           onClick={(event) => this.buttonAction(event)}

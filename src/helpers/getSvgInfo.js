@@ -1,5 +1,6 @@
 // returns javascript object with svg elements and attributes
 const getSvgInfo = (input) => {
+
   const parser = new DOMParser();
   const doc = parser.parseFromString(input, "image/svg+xml");
   const svgJson = xmlToJson(doc);
@@ -8,6 +9,10 @@ const getSvgInfo = (input) => {
   svgAndShapeList = svgAndShapeList.map((i) => {
     return {[i]: getTargets(svgJson, i)};
   })
+
+	// set svg height and width to 100%
+	svgAndShapeList[0].svg[0].attributes.height = '100%';
+	svgAndShapeList[0].svg[0].attributes.width = '100%';
 
   return svgAndShapeList;
 }

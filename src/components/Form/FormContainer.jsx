@@ -9,8 +9,10 @@ class FormContainer extends Component {
     super(props);
 
     this.state = {
-      showAbout: false
+      showAbout: false,
     }
+
+    this.toggleAbout = this.toggleAbout.bind(this);
   }
 
   toggleAbout = (event) => {
@@ -21,20 +23,22 @@ class FormContainer extends Component {
   }
 
   render() {
-    const {toggleForm, isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateTarget} = this.props;
+    const {getPreviewInfo, isChrome, optionList, selectedTarget, setOption, showForm, svgInfo, svgList, toggleForm, updateTarget} = this.props;
     const {showAbout} = this.state;
-    
+
     let body = null;
     if (!showAbout) {
       body = (
         <FormBody
-          toggleForm={toggleForm}
+          getPreviewInfo={getPreviewInfo}
           isChrome={isChrome}
           optionList={optionList}
           selectedTarget={selectedTarget}
           setOption={setOption}
           showForm={showForm}
+          svgInfo={svgInfo}
           svgList={svgList}
+          toggleForm={toggleForm}
           updateTarget={updateTarget}
         />
       );

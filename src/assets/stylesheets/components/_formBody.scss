@@ -1,0 +1,8 @@
+.form-body {
+  height: auto;
+  max-height: 100vh;
+  transition: all 0.2s ease-out;
+  &-hidden {
+    max-height: 0;
+  }
+}
