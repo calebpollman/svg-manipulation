@@ -107,7 +107,6 @@ class Index extends Component {
         <SvgContainer
           optionList={optionList}
           resetSvg={resetSvg}
-          selectedTarget={selectedTarget}
           svgInfo={svgInfo}
         />
       </div>

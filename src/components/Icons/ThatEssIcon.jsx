@@ -14,8 +14,8 @@ const ThatEss = ({showForm}) => {
   );
 }
 
-ThatEss.PropTypes = {
-  showForm: PropTypes.func,
+ThatEss.propTypes = {
+  showForm: PropTypes.bool,
 }
 
 export default ThatEss;

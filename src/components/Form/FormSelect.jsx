@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
-import ExpandIcon from '../Icons/ExpandIcon';
-import ShrinkIcon from '../Icons/ShrinkIcon';
+import CaretIcon from '../Icons/CaretIcon';
 
 class FormSelect extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // initialized as null, but updates to boolean
-      isOpen: null,
+      isOpen: false,
       selectedTarget: this.props.selectedTarget,
     }
 
@@ -19,9 +17,7 @@ class FormSelect extends Component {
 
   selectOption = (event) => {
     event.preventDefault();
-    const isOpen = this.state.isOpen;
     let value = event.target.getAttribute('value');
-    console.log(value)
     this.props.toggleContents();
     this.props.updateSelect(value);
     this.setState({
@@ -32,9 +28,6 @@ class FormSelect extends Component {
 
   toggleList = (event) => {
     event.preventDefault();
-    if (this.state.isOpen === false) {
-      this.props.toggleContents();
-    }
 
     this.setState({
       isOpen: !this.state.isOpen,
@@ -74,7 +67,7 @@ class FormSelect extends Component {
           value={selectedTarget}
         >
           {selectedTarget}
-          {isOpen ? <ShrinkIcon value={selectedTarget} /> : <ExpandIcon />}
+          <CaretIcon isOpen={isOpen} value={selectedTarget} />
         </li>
         <div className={isOpen ? "open" : "closed"}>
           {svgList}
@@ -84,7 +77,7 @@ class FormSelect extends Component {
   }
 }
 
-FormSelect.PropTypes = {
+FormSelect.propTypes = {
   selectedTarget: PropTypes.string,
   svgList: PropTypes.array,
   toggleContents: PropTypes.func,

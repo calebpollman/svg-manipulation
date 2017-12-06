@@ -18,7 +18,7 @@ const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
   )
 }
 
-FormTitle.PropTypes = {
+FormTitle.propTypes = {
   formTitle: PropTypes.string,
   showAbout: PropTypes.bool,
   toggleAbout: PropTypes.func,

@@ -36,8 +36,9 @@ class SvgPreview extends Component {
   }
 }
 
-SvgPreview.PropTypes = {
-  svgInfo: PropTypes.object,
+SvgPreview.propTypes = {
+  showContents: PropTypes.bool,
+  svgInfo: PropTypes.array,
 }
 
 export default SvgPreview;

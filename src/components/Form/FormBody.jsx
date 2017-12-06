@@ -80,7 +80,7 @@ class FormBody extends Component {
   }
 }
 
-FormBody.PropTypes = {
+FormBody.propTypes = {
   isChrome: PropTypes.bool,
   optionList: PropTypes.object,
   selectedTarget: PropTypes.string,

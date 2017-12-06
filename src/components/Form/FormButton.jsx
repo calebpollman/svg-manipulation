@@ -25,7 +25,7 @@ class FormButton extends Component {
   }
 }
 
-FormButton.PropTypes = {
+FormButton.propTypes = {
   buttonAction: PropTypes.func,
   buttonText: PropTypes.string,
   showButton: PropTypes.bool,

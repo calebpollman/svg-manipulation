@@ -65,7 +65,11 @@
   height: 1.6vw;
   position: absolute;
   right: 12px;
+  transition: all 0.1s linear;
   width: 1.6vw;
+  &-open {
+    transform: rotate(180deg);
+  }
 }
 
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {

@@ -1,4 +1,3 @@
-import getSvgInfo from './getSvgInfo';
 import getPaths from './getPaths';
 import animateSvg from './animateSvg';
 import handleOptions from './handleOptions';

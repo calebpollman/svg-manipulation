@@ -63,7 +63,7 @@ class FormContainer extends Component {
   }
 }
 
-FormContainer.PropTypes = {
+FormContainer.propTypes = {
   toggleForm: PropTypes.func,
   isChrome: PropTypes.bool,
   optionList: PropTypes.object,

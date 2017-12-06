@@ -22,7 +22,7 @@ class ToggleIcon extends Component {
   }
 }
 
-ToggleIcon.PropTypes = {
+ToggleIcon.propTypes = {
   toggleForm: PropTypes.func,
   showForm: PropTypes.bool,
 }

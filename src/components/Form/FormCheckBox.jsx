@@ -44,7 +44,7 @@ class FormCheckBox extends Component {
   }
 }
 
-FormCheckBox.PropTypes = {
+FormCheckBox.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   handleClick: PropTypes.func,
