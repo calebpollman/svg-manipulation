@@ -27,9 +27,11 @@ class Index extends Component {
 
   componentWillMount() {
     const {selectedTarget} = this.state;
+
     this.getPreviewInfo(selectedTarget);
     this.translateSvgList(staticSvgs);
     this.checkBrowser();
+
     document.addEventListener('keydown', this.keyFormToggle);
   }
 
@@ -61,7 +63,8 @@ class Index extends Component {
     this.setState({optionList});
   }
 
-  toggleForm = () => {
+  toggleForm = (event) => {
+    event.preventDefault();
     this.setState({
       showForm: !this.state.showForm,
     });
@@ -104,11 +107,11 @@ class Index extends Component {
           toggleForm={this.toggleForm}
           updateTarget={this.updateTarget}
         />
-        <SvgContainer
+        {/* <SvgContainer
           optionList={optionList}
           resetSvg={resetSvg}
           svgInfo={svgInfo}
-        />
+        /> */}
       </div>
     );
   }

@@ -1,25 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ThatEssIcon from '../Icons/ThatEssIcon';
+import CloseIcon from '../Icons/CloseIcon';
 
-class ToggleIcon extends Component {
-
-  toggleForm = () => {
-    this.props.toggleForm();
-  }
-
-  render() {
-    const {showForm} = this.props;
-
-    return (
-      <div
-        className="toggle-icon-container"
-        onClick={this.toggleForm}
-      >
-        <ThatEssIcon showForm={showForm} />
-      </div>
-    );
-  }
+const ToggleIcon = ({showForm, toggleForm}) => {
+  return (
+    <div
+      className="toggle-icon-container"
+      onClick={(event) => toggleForm(event)}
+    >
+      <CloseIcon showForm={showForm} type="close-svg" />
+    </div>
+  );
 }
 
 ToggleIcon.propTypes = {

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormCheckBox from './FormCheckBox';
 
-class FormInput extends Component {
+class FormOption extends Component {
   constructor(props) {
     super(props);
 
@@ -13,7 +13,9 @@ class FormInput extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (title) => {
+  handleClick = (event, title) => {
+    event.preventDefault();
+
     const checkValue = !this.state.checked;
     const type = this.props.type;
     this.setState({
@@ -24,11 +26,11 @@ class FormInput extends Component {
   render() {
     const {title, disabled} = this.props;
     const {checked} = this.state;
-    const isDisabled = disabled ? ' form-input-container-disabled' : '';
+    const isDisabled = disabled ? 'form-option-container-disabled' : '';
 
     return (
       <div
-        className={`form-input-container tk-europa${isDisabled}`}
+        className={`form-option-container tk-europa ${isDisabled}`}
         title={disabled ? 'This option is only available in Chrome.' : ''}
       >
         <FormCheckBox
@@ -43,7 +45,7 @@ class FormInput extends Component {
   }
 }
 
-FormInput.propTypes = {
+FormOption.propTypes = {
   disabled: PropTypes.bool,
   setOption: PropTypes.func,
   title: PropTypes.string,
@@ -51,4 +53,4 @@ FormInput.propTypes = {
   value: PropTypes.bool,
 }
 
-export default FormInput;
+export default FormOption;

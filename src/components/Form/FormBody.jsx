@@ -25,11 +25,13 @@ class FormBody extends Component {
     });
   }
 
-  submitForm = () => {
+  submitForm = (event) => {
+    event.preventDefault();
     let value = this.state.tempSelect;
     
     this.toggleContents();
-    this.props.toggleForm();
+    this.props.toggleForm(event)
+    ;
     this.props.updateTarget(value, 'resetSvg');
   }
 
@@ -56,25 +58,27 @@ class FormBody extends Component {
           svgList={svgList}
           updateSelect={this.updateSelect}
         />
-        <SvgPreview 
-          showContents={showContents}
-          svgInfo={svgInfo} 
-          tempSelect={tempSelect} 
-        />
-        <FormOptions
-          isChrome={isChrome}
-          optionList={optionList}
-          setOption={setOption}
-          showContents={showContents}
-          svgInfo={svgInfo}
-          tempSelect={tempSelect}
-        />
+        <div className="form-body-subcontainer">
+          <SvgPreview 
+            showContents={showContents}
+            svgInfo={svgInfo} 
+            tempSelect={tempSelect} 
+          />
+          <FormOptions
+            isChrome={isChrome}
+            optionList={optionList}
+            setOption={setOption}
+            showContents={showContents}
+            svgInfo={svgInfo}
+            tempSelect={tempSelect}
+          />
+        </div>
         <FormButton
-          buttonAction={this.submitForm}
-          buttonText="View SVG"
-          showContents={showContents}
-          showForm={showForm}          
-        />
+            buttonAction={this.submitForm}
+            buttonText="View SVG"
+            showContents={showContents}
+            showForm={showForm}          
+          />
       </div>
     );
   }

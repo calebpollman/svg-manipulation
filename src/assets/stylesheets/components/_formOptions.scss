@@ -15,9 +15,9 @@
 
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {
   .options-container {
-    display: flex;
-    height: 20vw;
-    width: 100%;
+    height: auto;
+    margin-left: auto;
+    width: 40%;
     &-hidden {
       height: 0;
       opacity: 0.0;
@@ -26,14 +26,15 @@
   }
 
   .options-subcontainer {
-    width: 40%;
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: $portrait-query) and (orientation: portrait) {
   .options-container {
-    height: 42vh;
+    height: auto;
     margin-top: 2vh;
+    padding-bottom: 2%;
     &-hidden {
       height: 0;
       opacity: 0.0;

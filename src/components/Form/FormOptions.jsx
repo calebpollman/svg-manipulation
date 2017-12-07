@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormInput from './FormInput';
+import FormOption from './FormOption';
 
 const FormOptions = ({isChrome, optionList, tempSelect, setOption, showContents, svgInfo}) => {
+  
   optionList = Object.entries(optionList);
-  const options = optionList.map((option, i) => {
+  
+  optionList = optionList.map((option, i) => {
     const title = option[1].title;
     let value = option[1].value;
     const disabled = !isChrome && title === 'Path Manipulation';
     value = disabled ? false : value;
 
-    return <FormInput
+    return <FormOption
       disabled={disabled}
       key={i}
       title={title}
@@ -23,7 +25,7 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showContents,
   return (
     <div className={showContents ? "options-container" : "options-container options-container-hidden"}>
       <div className="options-subcontainer">
-        {options}
+        {optionList}
       </div>
     </div>
   );

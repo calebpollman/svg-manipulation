@@ -8,6 +8,7 @@ class FormSelect extends Component {
 
     this.state = {
       isOpen: false,
+      hasBeenOpened: false,
       selectedTarget: this.props.selectedTarget,
     }
 
@@ -29,7 +30,12 @@ class FormSelect extends Component {
   toggleList = (event) => {
     event.preventDefault();
 
+    if (this.state.hasBeenOpened) {
+      this.props.toggleContents();
+    }
+
     this.setState({
+      hasBeenOpened: true,
       isOpen: !this.state.isOpen,
     });
   }

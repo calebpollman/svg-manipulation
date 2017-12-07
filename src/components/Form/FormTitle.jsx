@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from '../Icons/CloseIcon';
-import InfoIcon from '../Icons/InfoIcon';
+import ThatEssIcon from '../Icons/ThatEssIcon';
 
 const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
   return (
@@ -10,9 +10,8 @@ const FormTitle = ({formTitle, showAbout, toggleAbout}) => {
       <div
         className="title-icon-container"
         onClick={toggleAbout}
-        title={!showAbout ? 'Information!' : 'Back to fun!'}
       >
-        {!showAbout ? <InfoIcon /> : <CloseIcon />}
+        {!showAbout ? <ThatEssIcon showAbout={showAbout} /> : <CloseIcon type="close-about" />}
       </div>
     </div>
   )

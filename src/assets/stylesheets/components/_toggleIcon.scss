@@ -1,6 +1,7 @@
 .toggle-icon-container {
   height: 2.6vw;
-  margin-left: 2vw;
+  margin-left: auto;
+  margin-right: 2vw;
   position: sticky;
   top: 2vw;
   transition: all linear .2s;
@@ -26,15 +27,15 @@
     transform: translateX(-0.2vh);
     width: 2.6vw;
   }
-}
 
-.toggle-icon-hidden {
-  fill: none;
-  opacity: 0.0;
-  transform: translateX(-3vh);
-  visibility: collapse;
-  &:hover {
+  &-hidden {
     fill: none;
+    opacity: 0.0;
+    transform: translateX(3vh);
+    visibility: collapse;
+    &:hover {
+      fill: none;
+    }
   }
 }
 
@@ -42,13 +43,20 @@
   .toggle-icon {
     height: 4vw;
     width: 4vw;
+    
+    &-container {
+      height: 4vw;
+      width: 4vw;
+    }
   }
 }
 
 @media only screen and (max-device-width: $portrait-query) and (orientation: portrait) {
   .toggle-icon-container {
-    right: 4vw;
-    top: 4vw;
+    height: 6vh;
+    margin-right: 2vh;
+    top: 2vh;
+    width: 6vh;
   }
 
   .toggle-icon {
