@@ -54,7 +54,7 @@ class Index extends Component {
   }
   
   keyFormToggle(event) {
-    if (event.keyCode === 27 && this.state.showForm === false) this.toggleForm();
+    if (event.keyCode === 27 && this.state.showForm === false) this.toggleForm(event);
   }
 
   setOption = (type, label, checked) => {
