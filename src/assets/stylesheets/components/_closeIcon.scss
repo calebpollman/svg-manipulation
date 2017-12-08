@@ -2,8 +2,13 @@
   fill: $light-grey;
   height: 1.5vw;
   width: 1.5vw;
+  transition: all 0.2s ease-in-out;
   &:hover {
     cursor: pointer;
+    fill: $hot-pink;
+    height: 2vw;
+    transform: translateX(0.2vw) translateY(-0.2vw);
+    width: 2vw;
   }
 }
 
@@ -11,6 +16,13 @@
   .close-icon {
     height: 3vw;
     width: 3vw;
+    &:hover {
+      cursor: pointer;
+      fill: $light-grey;
+      height: 3vw;
+      transform: none;
+      width: 3vw;
+    }
   }
 }
 
@@ -18,5 +30,12 @@
   .close-icon {
     height: 3vh;
     width: 3vh;
+    &:hover {
+      cursor: pointer;
+      fill: $light-grey;
+      height: 3vh;
+      transform: none;
+      width: 3vh;
+    }
   }
 }

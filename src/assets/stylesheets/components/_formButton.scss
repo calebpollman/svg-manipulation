@@ -1,6 +1,6 @@
 .form-button {
   background-color: black;
-  border: 2px solid $light-grey;
+  border: none;
   color: $light-grey;
   font-size: 1.78vw;
   letter-spacing: 0.1vw;
@@ -18,20 +18,20 @@
     cursor: pointer;
   }
   &-hidden {
-    visibility: collapse;
+    visibility: none;
   }
 }
 
 .form-button-container {
   opacity: 1.0;
-  transition: all 0.3s 0.1s linear;
+  transition: all 0.3s linear;
   visibility: visible;
 }
 
 .hide-button {
   opacity: 0.0;
   transition: all 0.1s linear;
-  visibility: hidden;
+  visibility: collapse;
 }
 
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {

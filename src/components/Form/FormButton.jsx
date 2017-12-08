@@ -1,35 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class FormButton extends Component {
-  submitForm = (event) => {
-    event.preventDefault();
-    if (event.type === 'click') {
-      this.props.submitForm();
-    }
-  }
-
-  render() {
-    const {buttonText, showButton, showForm} = this.props;
-
-    return (
-      <div className={showButton ? "form-button-container" : "form-button-container hide-button"}>
-        <button
-          className={showForm ? "form-button tk-europa" : "form-button tk-europa form-button-hidden"}
-          onClick={(event) => this.submitForm(event)}
-        >
-          {buttonText}
-        </button>
-      </div>
-    );
-  }
+const FormButton = ({buttonAction, buttonText, showContents, showForm}) => {
+  return (
+    <div className={showContents ? "form-button-container" : "form-button-container hide-button"}>
+      <button
+        className={showForm ? "form-button tk-europa" : "form-button tk-europa form-button-hidden"}
+        onClick={(event) => buttonAction(event)}
+      >
+        {buttonText}
+      </button>
+    </div>
+  );
 }
 
-FormButton.PropTypes = {
+FormButton.propTypes = {
+  buttonAction: PropTypes.func,
   buttonText: PropTypes.string,
-  showButton: PropTypes.bool,
+  showContents: PropTypes.bool,
   showForm: PropTypes.bool,
-  submitForm: PropTypes.func,
 }
 
 export default FormButton;

@@ -11,6 +11,8 @@ class FormContainer extends Component {
     this.state = {
       showAbout: false,
     }
+
+    this.toggleAbout = this.toggleAbout.bind(this);
   }
 
   toggleAbout = (event) => {
@@ -21,20 +23,22 @@ class FormContainer extends Component {
   }
 
   render() {
-    const {hideForm, isChrome, optionList, selectedTarget, setOption, showForm, svgList, updateTarget} = this.props;
+    const {getPreviewInfo, isChrome, optionList, selectedTarget, setOption, showForm, svgInfo, svgList, toggleForm, updateTarget} = this.props;
     const {showAbout} = this.state;
-    
+
     let body = null;
     if (!showAbout) {
       body = (
         <FormBody
-          hideForm={hideForm}
+          getPreviewInfo={getPreviewInfo}
           isChrome={isChrome}
           optionList={optionList}
           selectedTarget={selectedTarget}
           setOption={setOption}
           showForm={showForm}
+          svgInfo={svgInfo}
           svgList={svgList}
+          toggleForm={toggleForm}
           updateTarget={updateTarget}
         />
       );
@@ -59,8 +63,8 @@ class FormContainer extends Component {
   }
 }
 
-FormContainer.PropTypes = {
-  hideForm: PropTypes.func,
+FormContainer.propTypes = {
+  toggleForm: PropTypes.func,
   isChrome: PropTypes.bool,
   optionList: PropTypes.object,
   selectedTarget: PropTypes.string,

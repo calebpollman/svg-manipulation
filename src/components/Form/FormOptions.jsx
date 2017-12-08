@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SvgPreview from '../Svg/SvgPreview';
-import FormInput from './FormInput';
+import FormOption from './FormOption';
 
-const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions}) => {
+const FormOptions = ({isChrome, optionList, tempSelect, setOption, showContents, svgInfo}) => {
+  
   optionList = Object.entries(optionList);
-  const options = optionList.map((option, i) => {
+  
+  optionList = optionList.map((option, i) => {
     const title = option[1].title;
     let value = option[1].value;
     const disabled = !isChrome && title === 'Path Manipulation';
     value = disabled ? false : value;
 
-    return <FormInput
+    return <FormOption
       disabled={disabled}
       key={i}
       title={title}
@@ -22,16 +23,15 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showOptions})
   });
 
   return (
-    <div className={showOptions ? "options-container" : "options-container options-container-hidden"}>
-      <SvgPreview tempSelect={tempSelect} />
+    <div className={showContents ? "options-container" : "options-container options-container-hidden"}>
       <div className="options-subcontainer">
-        {options}
+        {optionList}
       </div>
     </div>
   );
 }
 
-FormOptions.PropTypes = {
+FormOptions.propTypes = {
   isChrome: PropTypes.bool,
   optionList: PropTypes.object,
   setOption: PropTypes.func,

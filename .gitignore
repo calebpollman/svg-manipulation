@@ -25,3 +25,6 @@ src/**/*.css
 
 # notes
 NOTES.md
+
+# editor config
+.editorconfig

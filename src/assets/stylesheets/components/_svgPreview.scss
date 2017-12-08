@@ -1,18 +1,26 @@
-.preview-svg {
-  height: 10vw;
+.svg-preview {
+  height: auto;
+  opacity: 1.0;
   overflow: visible;
-  width: 100%;
+  margin: 10% auto;
+  transition: all 0.2s ease-in-out;
+  width: 80%;
+  &-hidden {
+    opacity: 0.0;
+    visibility: collapse;
+  }
 }
 
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {
-  .preview-svg {
-    height: 18vw;
+  .svg-preview {
+    height: auto;
+    margin: 0 auto;
     width: 60%;
   }
 }
 
 @media only screen and (max-width: $portrait-query) and (orientation: portrait) {
-  .preview-svg {
+  .svg-preview {
     height: 14vh;
   }
 }

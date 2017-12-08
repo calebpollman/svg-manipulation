@@ -3,80 +3,88 @@ import PropTypes from 'prop-types';
 import FormButton from './FormButton';
 import FormOptions from './FormOptions';
 import FormSelect from './FormSelect';
+import SvgPreview from '../Svg/SvgPreview';
 
 class FormBody extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showButton: true,
-      showOptions: false,
+      showContents: false,
       tempSelect: this.props.selectedTarget,
     }
 
-    this.hideButton = this.hideButton.bind(this);
+    this.toggleContents = this.toggleContents.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.toggleOptions = this.toggleOptions.bind(this);
+    this.updateSelect = this.updateSelect.bind(this);
   }
 
-  hideButton = () => {
+  toggleContents = () => {
     this.setState({
-      showButton: !this.state.showButton,
+      showContents: !this.state.showContents,
     });
   }
 
-  submitForm = () => {
+  submitForm = (event) => {
+    event.preventDefault();
     let value = this.state.tempSelect;
-    this.props.updateTarget(value);
-    this.toggleOptions();
-    this.props.hideForm();
-  }
-
-  toggleOptions = (value) => {
-    this.setState({
-      showOptions: value,
-    })
+    
+    this.toggleContents();
+    this.props.toggleForm(event)
+    ;
+    this.props.updateTarget(value, 'resetSvg');
   }
 
   updateSelect = (input) => {
+    if (this.state.tempSelect !== input) {
+      this.props.updateTarget(input, 'resetPreview');
+    }
+    
     this.setState({
+      showContents: true,
       tempSelect: input,
-      showButton: true,
     });
   }
 
   render() {
-    const {showForm, isChrome, optionList, selectedTarget, setOption, svgList} = this.props;
-    const {showButton, showOptions, tempSelect} = this.state;
-
+    const {isChrome, optionList, selectedTarget, setOption, showForm, svgInfo, svgList} = this.props;
+    const {showContents, tempSelect} = this.state;
+    
     return (
-      <div>
+      <div className={showContents ? "form-body" : "form-body form-body-hidden"}>
         <FormSelect
           selectedTarget={selectedTarget}
-          hideButton={this.hideButton}
+          toggleContents={this.toggleContents}
           svgList={svgList}
-          toggleOptions={this.toggleOptions}
           updateSelect={this.updateSelect}
         />
-        <FormOptions
-          isChrome={isChrome}
-          optionList={optionList}
-          setOption={setOption}
-          showOptions={showOptions}
-          tempSelect={tempSelect}
-        />
+        <div className="form-body-subcontainer">
+          <SvgPreview 
+            showContents={showContents}
+            svgInfo={svgInfo} 
+            tempSelect={tempSelect} 
+          />
+          <FormOptions
+            isChrome={isChrome}
+            optionList={optionList}
+            setOption={setOption}
+            showContents={showContents}
+            svgInfo={svgInfo}
+            tempSelect={tempSelect}
+          />
+        </div>
         <FormButton
-          buttonText="View SVG"
-          showForm={showForm}
-          submitForm={this.submitForm}
-          showButton={showButton}
-        />
+            buttonAction={this.submitForm}
+            buttonText="View SVG"
+            showContents={showContents}
+            showForm={showForm}          
+          />
       </div>
     );
   }
 }
 
-FormBody.PropTypes = {
+FormBody.propTypes = {
   isChrome: PropTypes.bool,
   optionList: PropTypes.object,
   selectedTarget: PropTypes.string,

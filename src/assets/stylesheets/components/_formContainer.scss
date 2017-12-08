@@ -7,7 +7,7 @@
   width: 100%;
   top: 0;
   transform: translateY(0);
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out, height 0.1s linear;
   visibility: visible;
 
   &-hidden {
@@ -21,7 +21,7 @@
 
 .form-container {
   background-color: $transparent-black;
-  height: auto;
+  min-height: 16vw;
   margin: 6% 0 0 35%;
   position: relative;
   width: 30%;
@@ -38,6 +38,8 @@
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {
   .form-container {
     margin: 6% 0 0 10%;
+    min-height: 28vh;
+    height: auto;
     width: 80%;
   }
 
@@ -49,6 +51,7 @@
 @media only screen and (max-width: $portrait-query) and (orientation: portrait) {
   .form-container {
     margin: 10% 0 0 10%;
+    min-height: 18%;
     width: 80%;
   }
 }
