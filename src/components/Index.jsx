@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+
 import getSvgInfo from '../helpers/getSvgInfo';
-import SvgContainer from "./Svg/SvgContainer";
-import FormContainer from './Form/FormContainer';
-import ToggleIcon from './ToggleIcon/ToggleIcon';
-import staticSvgs from '../assets/staticSvgs/staticSvgs';
 import optionList from '../helpers/optionList';
+import staticSvgs from '../assets/staticSvgs/staticSvgs';
+
+import FormContainer from './Form/FormContainer';
+import SideBar from './SideBar/SideBar';
+import SvgContainer from './Svg/SvgContainer';
+import IconBar from './IconBar/IconBar';
 
 class Index extends Component {
   constructor(props) {
@@ -17,6 +20,8 @@ class Index extends Component {
       resetSvg: false,
       selectedTarget: 'previous luxury',
       showForm: true,
+      showSideBar: false,
+      snapShots: [],
       svgInfo: null,
       svgList: [],
     };
@@ -53,7 +58,7 @@ class Index extends Component {
     this.setState({svgInfo});
   }
   
-  keyFormToggle(event) {
+  keyFormToggle = (event) => {
     if (event.keyCode === 27 && this.state.showForm === false) this.toggleForm(event);
   }
 
@@ -63,11 +68,29 @@ class Index extends Component {
     this.setState({optionList});
   }
 
+  takeSnapShot = (event) => {
+    event.preventDefault();
+
+    let {snapShots} = this.state;
+    
+    const snapShot = document.getElementById('main-svg').innerHTML;
+    snapShots.push(snapShot);
+    this.setState({snapShots});
+  }
+
   toggleForm = (event) => {
     event.preventDefault();
     this.setState({
       showForm: !this.state.showForm,
     });
+  }
+
+  toggleSideBar = (event) => {
+    event.preventDefault();
+  
+    this.setState({
+      showSideBar: !this.state.showSideBar,
+    })
   }
 
   translateSvgList = (staticSvgs) => {
@@ -87,13 +110,21 @@ class Index extends Component {
   }
 
   render() {
-    const {isChrome, optionList, resetSvg, selectedTarget, showForm, svgInfo, svgList} = this.state;
+    const {isChrome, optionList, resetSvg, selectedTarget, showForm, showSideBar, snapShots, svgInfo, svgList} = this.state;
     
     return (
       <div className="main-container">
-        <ToggleIcon
-          toggleForm={this.toggleForm}
+        <SideBar 
+          showSideBar={showSideBar}
+          snapShots={snapShots}
+          toggleSideBar={this.toggleSideBar}
+        />
+        <IconBar
+          showSideBar={showSideBar}
           showForm={showForm}
+          takeSnapShot={this.takeSnapShot}
+          toggleForm={this.toggleForm}
+          toggleSideBar={this.toggleSideBar}
         />
         <FormContainer
           getPreviewInfo={this.getPreviewInfo}

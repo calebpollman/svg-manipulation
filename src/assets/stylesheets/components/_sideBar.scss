@@ -1,0 +1,19 @@
+.side-bar-container {
+  background-color: $transparent-black;
+  height: 120vh;
+  position: absolute;
+  transition: all ease-in-out 0.2s;
+  width: 20%;
+  z-index: 3;
+
+  &-hidden {
+    width: 0;
+    visibility: collapse;
+  }
+}
+
+.side-bar-close-container {
+  margin: 2vw 2vw 0 auto;
+  height: 2.6vw;
+  width: 2.6vw;
+}

@@ -33,7 +33,7 @@ class SvgContainer extends Component {
 
 	render() {
 		return (
-			<div className="svg-container">
+			<div id="main-svg" className="svg-container">
         <svg ref={(elem) => { this.svg = elem; }} />
 			</div>
 		);

@@ -12,14 +12,16 @@ const FormOptions = ({isChrome, optionList, tempSelect, setOption, showContents,
     const disabled = !isChrome && title === 'Path Manipulation';
     value = disabled ? false : value;
 
-    return <FormOption
-      disabled={disabled}
-      key={i}
-      title={title}
-      setOption={setOption}
-      type={option[0]}
-      value={value}
-    />;
+    return (
+      <FormOption
+        disabled={disabled}
+        key={i}
+        title={title}
+        setOption={setOption}
+        type={option[0]}
+        value={value}
+      />
+    );
   });
 
   return (

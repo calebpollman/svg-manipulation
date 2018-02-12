@@ -1,4 +1,4 @@
-.close-icon {
+.close-about {
   fill: $light-grey;
   height: 1.7vw;
   width: 1.7vw;
@@ -9,8 +9,19 @@
   }
 }
 
+.close-sidebar {
+  fill: $slate-grey;
+  height: 2.6vw;
+  transition: all 0.2s ease-in-out;
+  width: 2.6vw;
+  &:hover {
+    cursor: pointer;
+    fill: $light-grey;
+  }
+}
+
 @media only screen and (max-width: $landscape-query) and (orientation: landscape) {
-  .close-icon {
+  .close-about {
     height: 3vw;
     width: 3vw;
     &:hover {
@@ -24,7 +35,7 @@
 }
 
 @media only screen and (max-width: $portrait-query) and (orientation: portrait) {
-  .close-icon {
+  .close-about {
     height: 3vh;
     width: 3vh;
     &:hover {

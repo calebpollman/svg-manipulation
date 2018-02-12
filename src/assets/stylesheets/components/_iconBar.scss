@@ -1,18 +1,26 @@
-.toggle-icon-container {
-  height: 2.6vw;
+.icon-bar-container {
+  align-items: center;
+  display: flex;
+  height: auto;
   margin-left: auto;
   margin-right: 2vw;
   position: sticky;
   top: 2vw;
+  width: 6%;
+  z-index: 3;
+}
+
+.icon-container {
+  height: 2.6vw;
+  margin-left: auto;
   transition: all linear .2s;
   width: 2.6vw;
-  z-index: 3;
   &:hover {
     top: 1.9vw;
   }
 }
 
-.toggle-icon {
+.icon-bar-item {
   fill: $slate-grey;
   height: 2.4vw;
   opacity: 0.8;
@@ -39,26 +47,26 @@
 }
 
 @media only screen and (max-device-width: $landscape-query) and (orientation: landscape) {
-  .toggle-icon {
+  .icon-container {
     height: 4vw;
     width: 4vw;
-    
-    &-container {
-      height: 4vw;
-      width: 4vw;
-    }
+  }
+
+  .icon-bar-item {
+    height: 4vw;
+    width: 4vw;
   }
 }
 
 @media only screen and (max-device-width: $portrait-query) and (orientation: portrait) {
-  .toggle-icon-container {
+  .icon-container {
     height: 6vh;
     margin-right: 2vh;
     top: 2vh;
     width: 6vh;
   }
 
-  .toggle-icon {
+  .icon-bar-item {
     height: 6vh;
     width: 6vh;
   }
