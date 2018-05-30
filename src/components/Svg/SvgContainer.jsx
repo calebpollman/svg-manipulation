@@ -13,17 +13,14 @@ class SvgContainer extends Component {
 		this.addSvg();
   }
 
-	shouldComponentUpdate(nextProps, nextState) {
-		if (this.props.resetSvg !== nextProps.resetSvg) {
-			return true;
-		} else {
-			return false;
-		}
+	shouldComponentUpdate(nextProps) {
+    const { resetSvg } = this.props
+		resetSvg !== nextProps.resetSvg ? true : false;
 	}
 
 	addSvg = () => {
 		const {optionList, svgInfo} = this.props;
-		
+
 		// clear prior svg
 		d3.select(this.svg).html(null);
 		const target = this.svg;
